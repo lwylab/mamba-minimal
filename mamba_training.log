@@ -1,0 +1,76 @@
+2025-03-03 01:00:33,881 - INFO - 使用 CPU
+2025-03-03 01:00:33,886 - ERROR - 错误：文件未找到，请检查路径 ../ai4i2020.csv
+2025-03-03 01:01:51,255 - INFO - 使用 CPU
+2025-03-03 01:01:51,374 - INFO - 数据加载成功！
+2025-03-03 01:01:51,375 - INFO - 数据集形状: (10000, 14)
+2025-03-03 01:01:51,375 - INFO - 数据集列: ['UDI', 'Product ID', 'Type', 'Air temperature [K]', 'Process temperature [K]', 'Rotational speed [rpm]', 'Torque [Nm]', 'Tool wear [min]', 'Machine failure', 'TWF', 'HDF', 'PWF', 'OSF', 'RNF']
+2025-03-03 01:01:51,380 - INFO - 添加温差特征
+2025-03-03 01:01:51,383 - INFO - 产品类型编码映射: {'H': 0, 'L': 1, 'M': 2}
+2025-03-03 01:01:51,387 - INFO - 故障类型映射: {0: '无故障', 1: 'TWF', 2: 'HDF', 3: 'PWF', 4: 'OSF', 5: 'RNF'}
+2025-03-03 01:01:51,396 - INFO - 故障类型分布:
+Fault_Type
+0    9652
+1      42
+2     106
+3      83
+4      98
+5      19
+Name: count, dtype: int64
+2025-03-03 01:01:53,963 - INFO - 模型参数总数: 235270
+2025-03-03 01:02:01,995 - INFO - Epoch 1/100 | Train Loss: 1.2666 | Val Loss: 0.3648
+2025-03-03 01:02:04,528 - INFO - Epoch 2/100 | Train Loss: 0.2015 | Val Loss: 0.1584
+2025-03-03 01:02:08,219 - INFO - Epoch 3/100 | Train Loss: 0.1483 | Val Loss: 0.1412
+2025-03-03 01:02:10,615 - INFO - Epoch 4/100 | Train Loss: 0.1331 | Val Loss: 0.1280
+2025-03-03 01:02:13,990 - INFO - Epoch 5/100 | Train Loss: 0.1204 | Val Loss: 0.1181
+2025-03-03 01:02:16,404 - INFO - Epoch 6/100 | Train Loss: 0.1099 | Val Loss: 0.1076
+2025-03-03 01:02:18,788 - INFO - Epoch 7/100 | Train Loss: 0.1018 | Val Loss: 0.1007
+2025-03-03 01:02:22,238 - INFO - Epoch 8/100 | Train Loss: 0.0922 | Val Loss: 0.0920
+2025-03-03 01:02:24,627 - INFO - Epoch 9/100 | Train Loss: 0.0837 | Val Loss: 0.0848
+2025-03-03 01:02:26,990 - INFO - Epoch 10/100 | Train Loss: 0.0787 | Val Loss: 0.0781
+2025-03-03 01:02:30,263 - INFO - Epoch 11/100 | Train Loss: 0.0723 | Val Loss: 0.0752
+2025-03-03 01:02:32,609 - INFO - Epoch 12/100 | Train Loss: 0.0688 | Val Loss: 0.0724
+2025-03-03 01:02:35,392 - INFO - Epoch 13/100 | Train Loss: 0.0640 | Val Loss: 0.0706
+2025-03-03 01:02:38,277 - INFO - Epoch 14/100 | Train Loss: 0.0625 | Val Loss: 0.0696
+2025-03-03 01:02:40,648 - INFO - Epoch 15/100 | Train Loss: 0.0596 | Val Loss: 0.0665
+2025-03-03 01:02:43,961 - INFO - Epoch 16/100 | Train Loss: 0.0605 | Val Loss: 0.0726
+2025-03-03 01:02:46,380 - INFO - Epoch 17/100 | Train Loss: 0.0582 | Val Loss: 0.0637
+2025-03-03 01:02:48,817 - INFO - Epoch 18/100 | Train Loss: 0.0558 | Val Loss: 0.0631
+2025-03-03 01:02:52,273 - INFO - Epoch 19/100 | Train Loss: 0.0556 | Val Loss: 0.0626
+2025-03-03 01:02:54,643 - INFO - Epoch 20/100 | Train Loss: 0.0536 | Val Loss: 0.0607
+2025-03-03 01:02:57,759 - INFO - Epoch 21/100 | Train Loss: 0.0533 | Val Loss: 0.0597
+2025-03-03 01:03:00,235 - INFO - Epoch 22/100 | Train Loss: 0.0514 | Val Loss: 0.0586
+2025-03-03 01:03:02,641 - INFO - Epoch 23/100 | Train Loss: 0.0507 | Val Loss: 0.0593
+2025-03-03 01:03:05,147 - INFO - Epoch 24/100 | Train Loss: 0.0504 | Val Loss: 0.0607
+2025-03-03 01:03:07,646 - INFO - Epoch 25/100 | Train Loss: 0.0477 | Val Loss: 0.0600
+2025-03-03 01:03:10,057 - INFO - Epoch 26/100 | Train Loss: 0.0492 | Val Loss: 0.0595
+2025-03-03 01:03:12,910 - INFO - Epoch 27/100 | Train Loss: 0.0473 | Val Loss: 0.0545
+2025-03-03 01:03:15,835 - INFO - Epoch 28/100 | Train Loss: 0.0474 | Val Loss: 0.0551
+2025-03-03 01:03:18,206 - INFO - Epoch 29/100 | Train Loss: 0.0461 | Val Loss: 0.0558
+2025-03-03 01:03:21,840 - INFO - Epoch 30/100 | Train Loss: 0.0447 | Val Loss: 0.0529
+2025-03-03 01:03:24,208 - INFO - Epoch 31/100 | Train Loss: 0.0438 | Val Loss: 0.0619
+2025-03-03 01:03:26,637 - INFO - Epoch 32/100 | Train Loss: 0.0457 | Val Loss: 0.0574
+2025-03-03 01:03:29,795 - INFO - Epoch 33/100 | Train Loss: 0.0450 | Val Loss: 0.0538
+2025-03-03 01:03:32,189 - INFO - Epoch 34/100 | Train Loss: 0.0437 | Val Loss: 0.0565
+2025-03-03 01:03:35,576 - INFO - Epoch 35/100 | Train Loss: 0.0436 | Val Loss: 0.0574
+2025-03-03 01:03:38,493 - INFO - Epoch 36/100 | Train Loss: 0.0415 | Val Loss: 0.0559
+2025-03-03 01:03:40,911 - INFO - Epoch 37/100 | Train Loss: 0.0427 | Val Loss: 0.0583
+2025-03-03 01:03:44,594 - INFO - Epoch 38/100 | Train Loss: 0.0403 | Val Loss: 0.0570
+2025-03-03 01:03:46,973 - INFO - Epoch 39/100 | Train Loss: 0.0394 | Val Loss: 0.0659
+2025-03-03 01:03:49,354 - INFO - Epoch 40/100 | Train Loss: 0.0411 | Val Loss: 0.0577
+2025-03-03 01:03:53,072 - INFO - Epoch 41/100 | Train Loss: 0.0404 | Val Loss: 0.0534
+2025-03-03 01:03:55,452 - INFO - Epoch 42/100 | Train Loss: 0.0394 | Val Loss: 0.0552
+2025-03-03 01:03:58,982 - INFO - Epoch 43/100 | Train Loss: 0.0404 | Val Loss: 0.0632
+2025-03-03 01:04:01,466 - INFO - Epoch 44/100 | Train Loss: 0.0380 | Val Loss: 0.0559
+2025-03-03 01:04:03,851 - INFO - Epoch 45/100 | Train Loss: 0.0370 | Val Loss: 0.0533
+2025-03-03 01:04:07,471 - INFO - Epoch 46/100 | Train Loss: 0.0366 | Val Loss: 0.0570
+2025-03-03 01:04:09,846 - INFO - Epoch 47/100 | Train Loss: 0.0370 | Val Loss: 0.0617
+2025-03-03 01:04:12,300 - INFO - Epoch 48/100 | Train Loss: 0.0369 | Val Loss: 0.0566
+2025-03-03 01:04:15,670 - INFO - Epoch 49/100 | Train Loss: 0.0361 | Val Loss: 0.0602
+2025-03-03 01:04:18,046 - INFO - Epoch 50/100 | Train Loss: 0.0381 | Val Loss: 0.0621
+2025-03-03 01:04:18,046 - INFO - Early stopping triggered after 50 epochs
+2025-03-03 01:04:18,052 - INFO - 最佳模型已保存到 mamba_experiment_results\20250303_010151\best_mamba_model.pth
+2025-03-03 01:04:18,555 - INFO - 学习曲线已保存到 mamba_experiment_results\20250303_010151\learning_curves.png
+2025-03-03 01:04:18,680 - INFO - 准确率: 0.9827
+2025-03-03 01:04:18,680 - INFO - 宏平均F1分数: 0.5608
+2025-03-03 01:04:18,680 - INFO - 加权平均F1分数: 0.9797
+2025-03-03 01:04:18,749 - INFO - 评估结果已保存到 mamba_experiment_results\20250303_010151\mamba_evaluation_results.json
