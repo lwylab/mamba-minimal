@@ -1,0 +1,8 @@
+Feature,Importance
+Process temperature [K],0.18671636
+Tool wear [min],0.18662938
+Rotational speed [rpm],0.18635634
+Type_encoded,0.17967999
+Temp_diff,0.17930673
+Torque [Nm],0.17863713
+Air temperature [K],0.1692793
