@@ -211,7 +211,8 @@ class DataProcessor:
         # 数据预处理
         # 删除不需要的列，保留Type_encoded作为特征，但删除原始Type列
         # 同时删除Machine failure和故障类型列，因为它们是预测目标
-        df_processed = df.drop(columns=self.config.columns_to_drop + ['Machine failure', 'Type', 'Has_Failure'], errors='ignore')
+        columns_to_drop = self.config.columns_to_drop + ['Machine failure', 'Type', 'Has_Failure'] + self.config.fault_types
+        df_processed = df.drop(columns=columns_to_drop, errors='ignore')
         
         # 分离特征和标签
         X = df_processed.drop(columns=['Fault_Type'])
