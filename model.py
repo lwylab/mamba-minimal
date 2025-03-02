@@ -27,6 +27,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from dataclasses import dataclass
 from einops import rearrange, repeat, einsum
+from sympy import Union
 
 
 @dataclass
