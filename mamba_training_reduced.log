@@ -622,3 +622,72 @@ Name: count, dtype: int64
 2025-03-03 03:50:03,985 - INFO - 超参数优化完成！
 2025-03-03 03:50:03,986 - INFO - 最佳参数: {'d_model': 188, 'n_layer': 2, 'd_state': 35, 'expand': 4, 'd_conv': 2, 'learning_rate': 0.0002159059716967624}
 2025-03-03 03:50:03,986 - INFO - 最佳F1加权分数: 0.9932
+2025-03-03 10:25:15,632 - INFO - 使用 CPU
+2025-03-03 10:25:15,652 - INFO - 数据加载成功！
+2025-03-03 10:25:15,652 - INFO - 数据集形状: (10000, 14)
+2025-03-03 10:25:15,654 - INFO - 数据集列: ['UDI', 'Product ID', 'Type', 'Air temperature [K]', 'Process temperature [K]', 'Rotational speed [rpm]', 'Torque [Nm]', 'Tool wear [min]', 'Machine failure', 'TWF', 'HDF', 'PWF', 'OSF', 'RNF']
+2025-03-03 10:25:15,656 - INFO - 添加温差特征
+2025-03-03 10:25:15,658 - INFO - 产品类型编码映射: {'H': 0, 'L': 1, 'M': 2}
+2025-03-03 10:25:15,661 - INFO - 故障类型映射: {0: '无故障', 1: 'HDF', 2: 'PWF', 3: 'OSF'}
+2025-03-03 10:25:15,664 - INFO - 故障类型分布:
+Fault_Type
+0    9713
+1     106
+2      83
+3      98
+Name: count, dtype: int64
+2025-03-03 10:25:16,918 - INFO - 模型参数总数: 1052804
+2025-03-03 10:25:23,334 - INFO - Epoch 1/100 | Train Loss: 0.2310 | Val Loss: 0.0708
+2025-03-03 10:25:31,827 - INFO - Epoch 2/100 | Train Loss: 0.0588 | Val Loss: 0.0602
+2025-03-03 10:25:38,630 - INFO - Epoch 3/100 | Train Loss: 0.0489 | Val Loss: 0.0510
+2025-03-03 10:25:45,391 - INFO - Epoch 4/100 | Train Loss: 0.0427 | Val Loss: 0.0400
+2025-03-03 10:25:51,875 - INFO - Epoch 5/100 | Train Loss: 0.0381 | Val Loss: 0.0391
+2025-03-03 10:25:58,503 - INFO - Epoch 6/100 | Train Loss: 0.0340 | Val Loss: 0.0314
+2025-03-03 10:26:04,956 - INFO - Epoch 7/100 | Train Loss: 0.0255 | Val Loss: 0.0287
+2025-03-03 10:26:11,429 - INFO - Epoch 8/100 | Train Loss: 0.0300 | Val Loss: 0.0349
+2025-03-03 10:26:18,032 - INFO - Epoch 9/100 | Train Loss: 0.0239 | Val Loss: 0.0295
+2025-03-03 10:26:26,304 - INFO - Epoch 10/100 | Train Loss: 0.0316 | Val Loss: 0.0514
+2025-03-03 10:26:34,853 - INFO - Epoch 11/100 | Train Loss: 0.0246 | Val Loss: 0.0294
+2025-03-03 10:26:41,272 - INFO - Epoch 12/100 | Train Loss: 0.0248 | Val Loss: 0.0250
+2025-03-03 10:26:48,819 - INFO - Epoch 13/100 | Train Loss: 0.0209 | Val Loss: 0.0625
+2025-03-03 10:26:57,514 - INFO - Epoch 14/100 | Train Loss: 0.0253 | Val Loss: 0.0331
+2025-03-03 10:27:04,983 - INFO - Epoch 15/100 | Train Loss: 0.0175 | Val Loss: 0.0290
+2025-03-03 10:27:11,584 - INFO - Epoch 16/100 | Train Loss: 0.0215 | Val Loss: 0.0555
+2025-03-03 10:27:18,177 - INFO - Epoch 17/100 | Train Loss: 0.0239 | Val Loss: 0.0260
+2025-03-03 10:27:24,386 - INFO - Epoch 18/100 | Train Loss: 0.0164 | Val Loss: 0.0402
+2025-03-03 10:27:30,570 - INFO - Epoch 19/100 | Train Loss: 0.0186 | Val Loss: 0.0378
+2025-03-03 10:27:36,772 - INFO - Epoch 20/100 | Train Loss: 0.0173 | Val Loss: 0.0268
+2025-03-03 10:27:42,953 - INFO - Epoch 21/100 | Train Loss: 0.0129 | Val Loss: 0.0267
+2025-03-03 10:27:49,190 - INFO - Epoch 22/100 | Train Loss: 0.0153 | Val Loss: 0.0440
+2025-03-03 10:27:56,249 - INFO - Epoch 23/100 | Train Loss: 0.0242 | Val Loss: 0.0382
+2025-03-03 10:28:02,862 - INFO - Epoch 24/100 | Train Loss: 0.0157 | Val Loss: 0.0272
+2025-03-03 10:28:09,530 - INFO - Epoch 25/100 | Train Loss: 0.0106 | Val Loss: 0.0348
+2025-03-03 10:28:16,196 - INFO - Epoch 26/100 | Train Loss: 0.0151 | Val Loss: 0.0289
+2025-03-03 10:28:23,363 - INFO - Epoch 27/100 | Train Loss: 0.0151 | Val Loss: 0.0274
+2025-03-03 10:28:30,666 - INFO - Epoch 28/100 | Train Loss: 0.0119 | Val Loss: 0.0316
+2025-03-03 10:28:39,308 - INFO - Epoch 29/100 | Train Loss: 0.0141 | Val Loss: 0.0663
+2025-03-03 10:28:46,418 - INFO - Epoch 30/100 | Train Loss: 0.0236 | Val Loss: 0.0271
+2025-03-03 10:28:53,860 - INFO - Epoch 31/100 | Train Loss: 0.0106 | Val Loss: 0.0291
+2025-03-03 10:29:01,349 - INFO - Epoch 32/100 | Train Loss: 0.0110 | Val Loss: 0.0331
+2025-03-03 10:29:01,349 - INFO - Early stopping triggered after 32 epochs
+2025-03-03 10:29:01,359 - INFO - 最佳模型已保存到 mamba_experiment_results_reduced\20250303_102515\best_mamba_model_reduced.pth
+2025-03-03 10:29:01,673 - INFO - 学习曲线已保存到 mamba_experiment_results_reduced\20250303_102515\learning_curves.svg
+2025-03-03 10:29:02,604 - INFO - 准确率: 0.9877
+2025-03-03 10:29:02,605 - INFO - 宏平均F1分数: 0.8574
+2025-03-03 10:29:02,605 - INFO - 加权平均F1分数: 0.9884
+2025-03-03 10:29:02,669 - INFO - 评估结果已保存到 mamba_experiment_results_reduced\20250303_102515\mamba_evaluation_results_reduced.json
+2025-03-03 10:29:04,069 - INFO - 特征重要性分析已保存到 mamba_experiment_results_reduced\20250303_102515
+2025-03-03 10:29:04,069 - INFO - 模型训练与评估完成！
+2025-03-03 10:29:04,069 - INFO - 最佳验证损失: 0.0250
+2025-03-03 10:29:04,069 - INFO - 准确率: 0.9877
+2025-03-03 10:29:04,069 - INFO - 宏平均F1分数: 0.8574
+2025-03-03 10:29:04,069 - INFO - 加权平均F1分数: 0.9884
+2025-03-03 10:29:04,070 - INFO - 前10个最重要的特征:
+2025-03-03 10:29:04,070 - INFO - 1. Tool wear [min]: 0.1989
+2025-03-03 10:29:04,070 - INFO - 2. Rotational speed [rpm]: 0.1969
+2025-03-03 10:29:04,070 - INFO - 3. Process temperature [K]: 0.1948
+2025-03-03 10:29:04,070 - INFO - 4. Torque [Nm]: 0.1822
+2025-03-03 10:29:04,070 - INFO - 5. Temp_diff: 0.1821
+2025-03-03 10:29:04,070 - INFO - 6. Type_encoded: 0.1821
+2025-03-03 10:29:04,070 - INFO - 7. Air temperature [K]: 0.1732
+2025-03-03 10:29:04,070 - INFO - 所有结果已保存到: mamba_experiment_results_reduced\20250303_102515

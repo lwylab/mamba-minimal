@@ -37,7 +37,13 @@ logging.basicConfig(
 plt.rcParams['font.sans-serif'] = ['SimHei']
 plt.rcParams['axes.unicode_minus'] = False
 
-
+# 2025-03-03 03:50:03,986 - INFO -
+# 最佳参数: {'d_model': 188,
+# 'n_layer': 2,
+# 'd_state': 35,
+# 'expand': 4,
+# 'd_conv': 2,
+# 'learning_rate': 0.0002159059716967624}
 @dataclass
 class Config:
     """配置类"""
@@ -47,16 +53,25 @@ class Config:
     experiment_data_path: str = "mamba_evaluation_results_reduced.json"
     batch_size: int = 128
     num_epochs: int = 100
-    learning_rate: float = 1e-4
+    # learning_rate: float = 1e-4
     early_stopping_patience: int = 20  # 早停
+
+    d_model: int = 188
+    n_layer: int = 2
+    d_state: int = 35
+    expand: int = 4
+    dt_rank: Union[int, str] = 'auto'
+    d_conv: int = 2
+    learning_rate: float = 0.0002159059716967624
+
     
     # Mamba模型参数
-    d_model: int = 128
-    n_layer: int = 2
-    d_state: int = 16
-    expand: int = 2
-    dt_rank: Union[int, str] = 'auto'
-    d_conv: int = 4
+    # d_model: int = 128
+    # n_layer: int = 2
+    # d_state: int = 16
+    # expand: int = 2
+    # dt_rank: Union[int, str] = 'auto'
+    # d_conv: int = 4
     
     max_seq_len: int = 1  # 表格数据每个样本作为一个序列元素
     device: torch.device = None
