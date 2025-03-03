@@ -14,7 +14,7 @@ import torch.nn as nn
 from sklearn.metrics import (
     classification_report, confusion_matrix,
     roc_curve, auc, precision_recall_curve, average_precision_score,
-    f1_score, accuracy_score
+    f1_score, accuracy_score, precision_score, recall_score
 )
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, LabelEncoder
@@ -512,7 +512,7 @@ class ModelEvaluator:
         
         # 绘制二分类PR曲线
         plt.figure(figsize=(10, 8))
-        precision_binary, recall_binary, _ = precision_recall_curve(y_test_binary, y_prob_binary)
+        precision_binary, recall_binary, thresholds_pr = precision_recall_curve(y_test_binary, y_prob_binary)
         avg_precision_binary = average_precision_score(y_test_binary, y_prob_binary)
         
         plt.plot(recall_binary, precision_binary, lw=2, label=f'发生故障 vs 无故障 (AP = {avg_precision_binary:.2f})')
@@ -525,13 +525,82 @@ class ModelEvaluator:
         plt.savefig(os.path.join(self.config.output_dir, "binary_pr_curve.svg"), format='svg', bbox_inches='tight')
         plt.close()
         
+        # 计算最佳阈值（使F1分数最大化）
+        # 注意：thresholds_pr比precision和recall少一个元素，需要处理
+        f1_scores = []
+        for i in range(len(thresholds_pr)):
+            # 使用当前阈值进行预测
+            y_pred_temp = (y_prob_binary >= thresholds_pr[i]).astype(int)
+            # 计算F1分数
+            f1 = f1_score(y_test_binary, y_pred_temp)
+            f1_scores.append(f1)
+        
+        # 找到最大F1分数对应的索引
+        best_idx = np.argmax(f1_scores)
+        best_threshold = thresholds_pr[best_idx]
+        best_f1 = f1_scores[best_idx]
+        
+        # 使用最佳阈值重新预测
+        y_pred_binary_optimal = (y_prob_binary >= best_threshold).astype(int)
+        
+        # 计算最佳阈值下的性能指标
+        optimal_precision = precision_score(y_test_binary, y_pred_binary_optimal)
+        optimal_recall = recall_score(y_test_binary, y_pred_binary_optimal)
+        optimal_f1 = f1_score(y_test_binary, y_pred_binary_optimal)
+        
+        # 记录最佳阈值信息
+        logging.info(f"最佳阈值: {best_threshold:.4f}")
+        logging.info(f"最佳阈值下的F1分数: {optimal_f1:.4f}")
+        logging.info(f"最佳阈值下的精确率: {optimal_precision:.4f}")
+        logging.info(f"最佳阈值下的召回率: {optimal_recall:.4f}")
+        
+        # 绘制F1分数与阈值的关系图
+        plt.figure(figsize=(10, 6))
+        plt.plot(thresholds_pr, f1_scores, 'b-')
+        plt.axvline(x=best_threshold, color='r', linestyle='--', 
+                   label=f'最佳阈值 = {best_threshold:.4f}\nF1 = {best_f1:.4f}')
+        plt.xlabel('阈值')
+        plt.ylabel('F1分数')
+        plt.title('F1分数与阈值的关系')
+        plt.legend()
+        plt.grid(True)
+        plt.savefig(os.path.join(self.config.output_dir, "f1_threshold.svg"), format='svg', bbox_inches='tight')
+        plt.close()
+        
+        # 将最佳阈值信息添加到评估结果中
+        evaluation_results['optimal_threshold'] = float(best_threshold)
+        evaluation_results['optimal_binary_metrics'] = {
+            'precision': float(optimal_precision),
+            'recall': float(optimal_recall),
+            'f1': float(optimal_f1),
+            'classification_report': classification_report(
+                y_test_binary, y_pred_binary_optimal,
+                target_names=binary_class_names,
+                output_dict=True,
+                zero_division=0
+            ),
+            'confusion_matrix': confusion_matrix(y_test_binary, y_pred_binary_optimal).tolist()
+        }
+        
+        # 绘制最佳阈值下的混淆矩阵
+        plt.figure(figsize=(8, 6))
+        cm_binary_optimal = confusion_matrix(y_test_binary, y_pred_binary_optimal)
+        sns.heatmap(cm_binary_optimal, annot=True, fmt='d', cmap='Blues',
+                   xticklabels=binary_class_names,
+                   yticklabels=binary_class_names)
+        plt.xlabel('预测标签')
+        plt.ylabel('真实标签')
+        plt.title(f'最佳阈值({best_threshold:.4f})下的二分类混淆矩阵')
+        plt.tight_layout()
+        plt.savefig(os.path.join(self.config.output_dir, "optimal_binary_confusion_matrix.svg"), format='svg', bbox_inches='tight')
+        plt.close()
+        
         # 绘制每个类别的精确率和召回率
         plt.figure(figsize=(12, 6))
         report = evaluation_results['classification_report']
         classes = []
         precision_values = []
         recall_values = []
-        
         for cls in report:
             if cls not in ['accuracy', 'macro avg', 'weighted avg']:
                 try:
