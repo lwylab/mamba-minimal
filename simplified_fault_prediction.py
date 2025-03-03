@@ -20,21 +20,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from torch.utils.data import DataLoader, TensorDataset
 
-# Set CUDA_VISIBLE_DEVICES
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"  # Use GPU 0, change if needed
-
-import torch
-import torch.nn as nn
-from mamba_ssm.modules.mamba2_simple import Mamba2Simple
-# ... rest of your code
-
-
 # 配置日志
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('mamba2_training.log'),
+        logging.FileHandler('simplified_training.log'),
         logging.StreamHandler()
     ]
 )
@@ -44,25 +35,57 @@ plt.rcParams['font.sans-serif'] = ['SimHei']
 plt.rcParams['axes.unicode_minus'] = False
 
 
+# 定义一个简化版的序列模型作为替代
+class SimplifiedSequenceModel(nn.Module):
+    def __init__(self, d_model, d_state=None, d_conv=None, expand=2, 
+                 headdim=None, ngroups=None, **kwargs):
+        super().__init__()
+        self.d_model = d_model
+        self.expand = expand
+        self.d_inner = self.expand * self.d_model
+        
+        # 简单的自注意力机制
+        self.attn = nn.MultiheadAttention(d_model, num_heads=4, batch_first=True)
+        
+        # 前馈网络
+        self.ffn = nn.Sequential(
+            nn.Linear(d_model, self.d_inner),
+            nn.GELU(),
+            nn.Linear(self.d_inner, d_model)
+        )
+        
+        # 层归一化
+        self.norm1 = nn.LayerNorm(d_model)
+        self.norm2 = nn.LayerNorm(d_model)
+        
+        logging.info(f"初始化简化版序列模型，d_model={d_model}")
+    
+    def forward(self, x):
+        # 自注意力层
+        attn_output, _ = self.attn(self.norm1(x), self.norm1(x), self.norm1(x))
+        x = x + attn_output
+        
+        # 前馈网络
+        x = x + self.ffn(self.norm2(x))
+        
+        return x
+
+
 @dataclass
 class Config:
     """配置类"""
     data_path: str = "./ai4i2020.csv"
-    model_save_path: str = "best_mamba2_model.pth"
-    base_output_dir: str = "mamba2_experiment_results"  # 基础输出目录
-    experiment_data_path: str = "mamba2_evaluation_results.json"
+    model_save_path: str = "best_simplified_model.pth"
+    base_output_dir: str = "simplified_experiment_results"  # 基础输出目录
+    experiment_data_path: str = "simplified_evaluation_results.json"
     batch_size: int = 128
     num_epochs: int = 100
     early_stopping_patience: int = 20  # 早停
 
-    # Mamba2模型参数
+    # 模型参数
     d_model: int = 192
     n_layer: int = 2
-    d_state: int = 64
     expand: int = 2
-    d_conv: int = 4
-    headdim: int = 64
-    ngroups: int = 1
     learning_rate: float = 2e-4
     
     max_seq_len: int = 1  # 表格数据每个样本作为一个序列元素
@@ -105,8 +128,8 @@ class Config:
             logging.info("使用 CPU")
 
 
-class Mamba2ForFaultPrediction(nn.Module):
-    """使用Mamba2架构的故障预测模型"""
+class SimplifiedFaultPredictionModel(nn.Module):
+    """使用简化架构的故障预测模型"""
     
     def __init__(self, config: Config, input_dim: int, num_classes: int):
         super().__init__()
@@ -118,15 +141,11 @@ class Mamba2ForFaultPrediction(nn.Module):
         # 位置编码（简化版，因为我们的序列长度为1）
         self.pos_encoder = nn.Parameter(torch.zeros(1, 1, config.d_model))
         
-        # Mamba2层
+        # 序列处理层
         self.layers = nn.ModuleList([
-            Mamba2Simple(
+            SimplifiedSequenceModel(
                 d_model=config.d_model,
-                d_state=config.d_state,
-                d_conv=config.d_conv,
-                expand=config.expand,
-                headdim=config.headdim,
-                ngroups=config.ngroups
+                expand=config.expand
             ) for _ in range(config.n_layer)
         ])
         
@@ -148,7 +167,7 @@ class Mamba2ForFaultPrediction(nn.Module):
         # 添加位置编码
         x = x + self.pos_encoder
         
-        # 通过Mamba2层
+        # 通过序列处理层
         for layer in self.layers:
             x = x + layer(x)  # 添加残差连接
         
@@ -577,7 +596,7 @@ def main():
     input_dim = X_test_tensor.shape[1]
     
     # 创建模型
-    model = Mamba2ForFaultPrediction(config, input_dim, config.num_classes)
+    model = SimplifiedFaultPredictionModel(config, input_dim, config.num_classes)
     model = model.to(config.device)
     logging.info(f"模型创建完成，参数数量: {sum(p.numel() for p in model.parameters() if p.requires_grad)}")
     
@@ -593,6 +612,7 @@ def main():
     evaluator = ModelEvaluator(config)
     evaluation_results = evaluator.evaluate(model, X_test_tensor, y_test, data_processor.fault_mapping)
     logging.info("模型评估完成")
+    
     
     # 打印最终结果
     logging.info(f"实验完成！结果保存在: {config.output_dir}")
