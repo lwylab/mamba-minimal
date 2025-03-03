@@ -261,3 +261,364 @@ Name: count, dtype: int64
 2025-03-03 01:43:14,451 - INFO - 6. Process temperature [K]: 0.1720
 2025-03-03 01:43:14,451 - INFO - 7. Tool wear [min]: 0.1708
 2025-03-03 01:43:14,451 - INFO - 所有结果已保存到: mamba_experiment_results_reduced\20250303_014019
+2025-03-03 01:54:15,669 - INFO - 使用 CPU
+2025-03-03 01:54:15,670 - INFO - 开始超参数优化...
+2025-03-03 01:54:15,670 - INFO - 准备数据集...
+2025-03-03 01:54:15,672 - INFO - 使用 CPU
+2025-03-03 01:54:15,693 - INFO - 数据加载成功！
+2025-03-03 01:54:15,718 - INFO - 数据准备完成。训练集: (7000, 7), 验证集: (3000, 7)
+2025-03-03 01:54:15,721 - INFO - 试验 #0 超参数: {'d_model': 88, 'n_layer': 2, 'd_state': 45, 'expand': 4, 'd_conv': 3, 'learning_rate': 1.0993127297485834e-05}
+2025-03-03 01:54:15,721 - INFO - 使用 CPU
+2025-03-03 01:54:22,061 - INFO - Epoch 1/50 | Train Loss: 1.4905 | Val Loss: 1.4098 | Accuracy: 0.2817 | F1 (weighted): 0.4218
+2025-03-03 01:54:41,779 - INFO - Epoch 5/50 | Train Loss: 0.4049 | Val Loss: 0.3109 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 01:55:06,414 - INFO - Epoch 10/50 | Train Loss: 0.1266 | Val Loss: 0.1249 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 01:55:30,860 - INFO - Epoch 15/50 | Train Loss: 0.1002 | Val Loss: 0.1000 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 01:55:55,297 - INFO - Epoch 20/50 | Train Loss: 0.0842 | Val Loss: 0.0857 | Accuracy: 0.9720 | F1 (weighted): 0.9588
+2025-03-03 01:56:19,786 - INFO - Epoch 25/50 | Train Loss: 0.0719 | Val Loss: 0.0750 | Accuracy: 0.9737 | F1 (weighted): 0.9644
+2025-03-03 01:56:44,126 - INFO - Epoch 30/50 | Train Loss: 0.0623 | Val Loss: 0.0663 | Accuracy: 0.9750 | F1 (weighted): 0.9696
+2025-03-03 01:57:08,638 - INFO - Epoch 35/50 | Train Loss: 0.0545 | Val Loss: 0.0591 | Accuracy: 0.9780 | F1 (weighted): 0.9737
+2025-03-03 01:57:33,107 - INFO - Epoch 40/50 | Train Loss: 0.0479 | Val Loss: 0.0526 | Accuracy: 0.9797 | F1 (weighted): 0.9759
+2025-03-03 01:57:57,566 - INFO - Epoch 45/50 | Train Loss: 0.0424 | Val Loss: 0.0473 | Accuracy: 0.9820 | F1 (weighted): 0.9789
+2025-03-03 01:58:22,244 - INFO - Epoch 50/50 | Train Loss: 0.0380 | Val Loss: 0.0430 | Accuracy: 0.9843 | F1 (weighted): 0.9818
+2025-03-03 01:58:22,247 - INFO - 试验 #1 超参数: {'d_model': 79, 'n_layer': 1, 'd_state': 31, 'expand': 3, 'd_conv': 4, 'learning_rate': 7.51427921469496e-05}
+2025-03-03 01:58:22,248 - INFO - 使用 CPU
+2025-03-03 01:58:23,758 - INFO - Epoch 1/50 | Train Loss: 1.3670 | Val Loss: 1.0805 | Accuracy: 0.6517 | F1 (weighted): 0.7672
+2025-03-03 01:58:29,619 - INFO - Epoch 5/50 | Train Loss: 0.1078 | Val Loss: 0.1019 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 01:58:36,946 - INFO - Epoch 10/50 | Train Loss: 0.0712 | Val Loss: 0.0722 | Accuracy: 0.9737 | F1 (weighted): 0.9640
+2025-03-03 01:58:44,222 - INFO - Epoch 15/50 | Train Loss: 0.0520 | Val Loss: 0.0573 | Accuracy: 0.9767 | F1 (weighted): 0.9692
+2025-03-03 01:58:51,658 - INFO - Epoch 20/50 | Train Loss: 0.0395 | Val Loss: 0.0436 | Accuracy: 0.9840 | F1 (weighted): 0.9815
+2025-03-03 01:58:59,144 - INFO - Epoch 25/50 | Train Loss: 0.0326 | Val Loss: 0.0375 | Accuracy: 0.9843 | F1 (weighted): 0.9825
+2025-03-03 01:59:06,663 - INFO - Epoch 30/50 | Train Loss: 0.0281 | Val Loss: 0.0403 | Accuracy: 0.9840 | F1 (weighted): 0.9807
+2025-03-03 01:59:13,900 - INFO - Epoch 35/50 | Train Loss: 0.0267 | Val Loss: 0.0339 | Accuracy: 0.9863 | F1 (weighted): 0.9846
+2025-03-03 01:59:21,199 - INFO - Epoch 40/50 | Train Loss: 0.0230 | Val Loss: 0.0328 | Accuracy: 0.9870 | F1 (weighted): 0.9863
+2025-03-03 01:59:28,421 - INFO - Epoch 45/50 | Train Loss: 0.0214 | Val Loss: 0.0286 | Accuracy: 0.9887 | F1 (weighted): 0.9885
+2025-03-03 01:59:35,647 - INFO - Epoch 50/50 | Train Loss: 0.0195 | Val Loss: 0.0306 | Accuracy: 0.9863 | F1 (weighted): 0.9846
+2025-03-03 01:59:35,649 - INFO - 试验 #2 超参数: {'d_model': 182, 'n_layer': 3, 'd_state': 30, 'expand': 4, 'd_conv': 3, 'learning_rate': 1.9787013688596005e-05}
+2025-03-03 01:59:35,649 - INFO - 使用 CPU
+2025-03-03 01:59:47,578 - INFO - Epoch 1/50 | Train Loss: 1.3479 | Val Loss: 0.7334 | Accuracy: 0.8877 | F1 (weighted): 0.9163
+2025-03-03 02:00:35,115 - INFO - Epoch 5/50 | Train Loss: 0.0836 | Val Loss: 0.0806 | Accuracy: 0.9717 | F1 (weighted): 0.9582
+2025-03-03 02:01:34,376 - INFO - Epoch 10/50 | Train Loss: 0.0486 | Val Loss: 0.0519 | Accuracy: 0.9790 | F1 (weighted): 0.9723
+2025-03-03 02:02:34,071 - INFO - Epoch 15/50 | Train Loss: 0.0320 | Val Loss: 0.0358 | Accuracy: 0.9850 | F1 (weighted): 0.9844
+2025-03-03 02:03:33,400 - INFO - Epoch 20/50 | Train Loss: 0.0226 | Val Loss: 0.0303 | Accuracy: 0.9860 | F1 (weighted): 0.9860
+2025-03-03 02:04:32,924 - INFO - Epoch 25/50 | Train Loss: 0.0181 | Val Loss: 0.0272 | Accuracy: 0.9897 | F1 (weighted): 0.9898
+2025-03-03 02:05:32,485 - INFO - Epoch 30/50 | Train Loss: 0.0150 | Val Loss: 0.0238 | Accuracy: 0.9890 | F1 (weighted): 0.9893
+2025-03-03 02:06:32,000 - INFO - Epoch 35/50 | Train Loss: 0.0104 | Val Loss: 0.0239 | Accuracy: 0.9917 | F1 (weighted): 0.9912
+2025-03-03 02:07:31,312 - INFO - Epoch 40/50 | Train Loss: 0.0116 | Val Loss: 0.0241 | Accuracy: 0.9907 | F1 (weighted): 0.9904
+2025-03-03 02:08:30,619 - INFO - Epoch 45/50 | Train Loss: 0.0084 | Val Loss: 0.0221 | Accuracy: 0.9917 | F1 (weighted): 0.9915
+2025-03-03 02:09:29,853 - INFO - Epoch 50/50 | Train Loss: 0.0075 | Val Loss: 0.0227 | Accuracy: 0.9923 | F1 (weighted): 0.9922
+2025-03-03 02:09:29,856 - INFO - 试验 #3 超参数: {'d_model': 161, 'n_layer': 4, 'd_state': 24, 'expand': 2, 'd_conv': 2, 'learning_rate': 2.615938472131361e-05}
+2025-03-03 02:09:29,857 - INFO - 使用 CPU
+2025-03-03 02:09:33,947 - INFO - Epoch 1/50 | Train Loss: 0.9886 | Val Loss: 0.5097 | Accuracy: 0.9557 | F1 (weighted): 0.9511
+2025-03-03 02:09:49,939 - INFO - Epoch 5/50 | Train Loss: 0.0849 | Val Loss: 0.0808 | Accuracy: 0.9720 | F1 (weighted): 0.9590
+2025-03-03 02:10:10,015 - INFO - Epoch 10/50 | Train Loss: 0.0507 | Val Loss: 0.0543 | Accuracy: 0.9773 | F1 (weighted): 0.9714
+2025-03-03 02:10:30,070 - INFO - Epoch 15/50 | Train Loss: 0.0311 | Val Loss: 0.0348 | Accuracy: 0.9867 | F1 (weighted): 0.9851
+2025-03-03 02:10:50,123 - INFO - Epoch 20/50 | Train Loss: 0.0218 | Val Loss: 0.0294 | Accuracy: 0.9873 | F1 (weighted): 0.9853
+2025-03-03 02:11:10,225 - INFO - Epoch 25/50 | Train Loss: 0.0172 | Val Loss: 0.0256 | Accuracy: 0.9903 | F1 (weighted): 0.9902
+2025-03-03 02:11:30,302 - INFO - Epoch 30/50 | Train Loss: 0.0150 | Val Loss: 0.0267 | Accuracy: 0.9900 | F1 (weighted): 0.9899
+2025-03-03 02:11:50,288 - INFO - Epoch 35/50 | Train Loss: 0.0105 | Val Loss: 0.0250 | Accuracy: 0.9890 | F1 (weighted): 0.9892
+2025-03-03 02:12:10,395 - INFO - Epoch 40/50 | Train Loss: 0.0101 | Val Loss: 0.0277 | Accuracy: 0.9903 | F1 (weighted): 0.9901
+2025-03-03 02:12:14,348 - INFO - 早停触发，在第 41 轮停止训练
+2025-03-03 02:12:14,350 - INFO - 试验 #4 超参数: {'d_model': 215, 'n_layer': 2, 'd_state': 23, 'expand': 2, 'd_conv': 3, 'learning_rate': 0.0001523986369791116}
+2025-03-03 02:12:14,351 - INFO - 使用 CPU
+2025-03-03 02:12:18,629 - INFO - Epoch 1/50 | Train Loss: 0.3971 | Val Loss: 0.0929 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 02:12:35,649 - INFO - Epoch 5/50 | Train Loss: 0.0420 | Val Loss: 0.0425 | Accuracy: 0.9810 | F1 (weighted): 0.9801
+2025-03-03 02:12:56,932 - INFO - Epoch 10/50 | Train Loss: 0.0223 | Val Loss: 0.0358 | Accuracy: 0.9850 | F1 (weighted): 0.9833
+2025-03-03 02:13:18,210 - INFO - Epoch 15/50 | Train Loss: 0.0233 | Val Loss: 0.0396 | Accuracy: 0.9813 | F1 (weighted): 0.9830
+2025-03-03 02:13:39,490 - INFO - Epoch 20/50 | Train Loss: 0.0153 | Val Loss: 0.0332 | Accuracy: 0.9870 | F1 (weighted): 0.9880
+2025-03-03 02:14:00,865 - INFO - Epoch 25/50 | Train Loss: 0.0165 | Val Loss: 0.0284 | Accuracy: 0.9883 | F1 (weighted): 0.9884
+2025-03-03 02:14:22,334 - INFO - Epoch 30/50 | Train Loss: 0.0133 | Val Loss: 0.0221 | Accuracy: 0.9897 | F1 (weighted): 0.9897
+2025-03-03 02:14:30,797 - INFO - 早停触发，在第 32 轮停止训练
+2025-03-03 02:14:30,799 - INFO - 试验 #5 超参数: {'d_model': 150, 'n_layer': 2, 'd_state': 28, 'expand': 4, 'd_conv': 3, 'learning_rate': 4.984053363387716e-05}
+2025-03-03 02:14:30,799 - INFO - 使用 CPU
+2025-03-03 02:14:37,087 - INFO - Epoch 1/50 | Train Loss: 0.7849 | Val Loss: 0.1581 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 02:15:02,367 - INFO - Epoch 5/50 | Train Loss: 0.0604 | Val Loss: 0.0621 | Accuracy: 0.9750 | F1 (weighted): 0.9711
+2025-03-03 02:15:33,761 - INFO - Epoch 10/50 | Train Loss: 0.0325 | Val Loss: 0.0370 | Accuracy: 0.9837 | F1 (weighted): 0.9821
+2025-03-03 02:16:05,259 - INFO - Epoch 15/50 | Train Loss: 0.0238 | Val Loss: 0.0290 | Accuracy: 0.9883 | F1 (weighted): 0.9878
+2025-03-03 02:16:36,681 - INFO - Epoch 20/50 | Train Loss: 0.0159 | Val Loss: 0.0228 | Accuracy: 0.9907 | F1 (weighted): 0.9904
+2025-03-03 02:17:08,163 - INFO - Epoch 25/50 | Train Loss: 0.0172 | Val Loss: 0.0263 | Accuracy: 0.9880 | F1 (weighted): 0.9878
+2025-03-03 02:17:39,564 - INFO - Epoch 30/50 | Train Loss: 0.0104 | Val Loss: 0.0226 | Accuracy: 0.9920 | F1 (weighted): 0.9919
+2025-03-03 02:18:11,134 - INFO - Epoch 35/50 | Train Loss: 0.0100 | Val Loss: 0.0251 | Accuracy: 0.9907 | F1 (weighted): 0.9905
+2025-03-03 02:18:36,548 - INFO - 早停触发，在第 39 轮停止训练
+2025-03-03 02:18:36,549 - INFO - 试验 #6 超参数: {'d_model': 120, 'n_layer': 3, 'd_state': 18, 'expand': 2, 'd_conv': 4, 'learning_rate': 6.232898939171742e-05}
+2025-03-03 02:18:36,550 - INFO - 使用 CPU
+2025-03-03 02:18:39,908 - INFO - Epoch 1/50 | Train Loss: 0.9414 | Val Loss: 0.5160 | Accuracy: 0.9530 | F1 (weighted): 0.9483
+2025-03-03 02:18:53,182 - INFO - Epoch 5/50 | Train Loss: 0.0843 | Val Loss: 0.0821 | Accuracy: 0.9720 | F1 (weighted): 0.9589
+2025-03-03 02:19:09,909 - INFO - Epoch 10/50 | Train Loss: 0.0470 | Val Loss: 0.0500 | Accuracy: 0.9800 | F1 (weighted): 0.9765
+2025-03-03 02:19:26,461 - INFO - Epoch 15/50 | Train Loss: 0.0312 | Val Loss: 0.0328 | Accuracy: 0.9867 | F1 (weighted): 0.9858
+2025-03-03 02:19:43,138 - INFO - Epoch 20/50 | Train Loss: 0.0231 | Val Loss: 0.0292 | Accuracy: 0.9870 | F1 (weighted): 0.9872
+2025-03-03 02:19:59,715 - INFO - Epoch 25/50 | Train Loss: 0.0173 | Val Loss: 0.0314 | Accuracy: 0.9860 | F1 (weighted): 0.9867
+2025-03-03 02:20:16,609 - INFO - Epoch 30/50 | Train Loss: 0.0153 | Val Loss: 0.0289 | Accuracy: 0.9897 | F1 (weighted): 0.9892
+2025-03-03 02:20:33,216 - INFO - Epoch 35/50 | Train Loss: 0.0122 | Val Loss: 0.0227 | Accuracy: 0.9903 | F1 (weighted): 0.9902
+2025-03-03 02:20:49,784 - INFO - Epoch 40/50 | Train Loss: 0.0122 | Val Loss: 0.0294 | Accuracy: 0.9900 | F1 (weighted): 0.9894
+2025-03-03 02:21:06,459 - INFO - 早停触发，在第 45 轮停止训练
+2025-03-03 02:21:06,460 - INFO - 试验 #7 超参数: {'d_model': 188, 'n_layer': 2, 'd_state': 35, 'expand': 4, 'd_conv': 2, 'learning_rate': 0.0002159059716967624}
+2025-03-03 02:21:06,461 - INFO - 使用 CPU
+2025-03-03 02:21:12,663 - INFO - Epoch 1/50 | Train Loss: 0.2241 | Val Loss: 0.0706 | Accuracy: 0.9737 | F1 (weighted): 0.9631
+2025-03-03 02:21:37,304 - INFO - Epoch 5/50 | Train Loss: 0.0438 | Val Loss: 0.0396 | Accuracy: 0.9817 | F1 (weighted): 0.9779
+2025-03-03 02:22:08,190 - INFO - Epoch 10/50 | Train Loss: 0.0222 | Val Loss: 0.0307 | Accuracy: 0.9867 | F1 (weighted): 0.9860
+2025-03-03 02:22:39,105 - INFO - Epoch 15/50 | Train Loss: 0.0216 | Val Loss: 0.0247 | Accuracy: 0.9887 | F1 (weighted): 0.9887
+2025-03-03 02:23:10,135 - INFO - Epoch 20/50 | Train Loss: 0.0156 | Val Loss: 0.0267 | Accuracy: 0.9887 | F1 (weighted): 0.9886
+2025-03-03 02:23:40,947 - INFO - Epoch 25/50 | Train Loss: 0.0157 | Val Loss: 0.0276 | Accuracy: 0.9890 | F1 (weighted): 0.9884
+2025-03-03 02:24:12,137 - INFO - Epoch 30/50 | Train Loss: 0.0166 | Val Loss: 0.0269 | Accuracy: 0.9890 | F1 (weighted): 0.9888
+2025-03-03 02:24:42,998 - INFO - Epoch 35/50 | Train Loss: 0.0128 | Val Loss: 0.0296 | Accuracy: 0.9900 | F1 (weighted): 0.9897
+2025-03-03 02:24:55,369 - INFO - 早停触发，在第 37 轮停止训练
+2025-03-03 02:24:55,370 - INFO - 试验 #8 超参数: {'d_model': 210, 'n_layer': 2, 'd_state': 22, 'expand': 4, 'd_conv': 5, 'learning_rate': 1.0019925591432721e-05}
+2025-03-03 02:24:55,371 - INFO - 使用 CPU
+2025-03-03 02:25:03,483 - INFO - Epoch 1/50 | Train Loss: 1.3594 | Val Loss: 1.1867 | Accuracy: 0.4827 | F1 (weighted): 0.6324
+2025-03-03 02:25:35,210 - INFO - Epoch 5/50 | Train Loss: 0.1367 | Val Loss: 0.1231 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 02:26:14,944 - INFO - Epoch 10/50 | Train Loss: 0.0847 | Val Loss: 0.0837 | Accuracy: 0.9717 | F1 (weighted): 0.9580
+2025-03-03 02:26:54,576 - INFO - Epoch 15/50 | Train Loss: 0.0680 | Val Loss: 0.0687 | Accuracy: 0.9733 | F1 (weighted): 0.9629
+2025-03-03 02:27:34,371 - INFO - Epoch 20/50 | Train Loss: 0.0538 | Val Loss: 0.0570 | Accuracy: 0.9767 | F1 (weighted): 0.9690
+2025-03-03 02:28:14,086 - INFO - Epoch 25/50 | Train Loss: 0.0421 | Val Loss: 0.0464 | Accuracy: 0.9827 | F1 (weighted): 0.9788
+2025-03-03 02:28:53,702 - INFO - Epoch 30/50 | Train Loss: 0.0339 | Val Loss: 0.0399 | Accuracy: 0.9843 | F1 (weighted): 0.9818
+2025-03-03 02:29:33,687 - INFO - Epoch 35/50 | Train Loss: 0.0293 | Val Loss: 0.0345 | Accuracy: 0.9847 | F1 (weighted): 0.9828
+2025-03-03 02:30:13,435 - INFO - Epoch 40/50 | Train Loss: 0.0251 | Val Loss: 0.0321 | Accuracy: 0.9863 | F1 (weighted): 0.9849
+2025-03-03 02:30:53,160 - INFO - Epoch 45/50 | Train Loss: 0.0225 | Val Loss: 0.0298 | Accuracy: 0.9873 | F1 (weighted): 0.9862
+2025-03-03 02:31:32,981 - INFO - Epoch 50/50 | Train Loss: 0.0197 | Val Loss: 0.0282 | Accuracy: 0.9863 | F1 (weighted): 0.9851
+2025-03-03 02:31:32,984 - INFO - 试验 #9 超参数: {'d_model': 250, 'n_layer': 1, 'd_state': 35, 'expand': 4, 'd_conv': 3, 'learning_rate': 1.1963146888110933e-05}
+2025-03-03 02:31:32,985 - INFO - 使用 CPU
+2025-03-03 02:31:38,891 - INFO - Epoch 1/50 | Train Loss: 1.1362 | Val Loss: 0.8907 | Accuracy: 0.7730 | F1 (weighted): 0.8549
+2025-03-03 02:32:02,847 - INFO - Epoch 5/50 | Train Loss: 0.0978 | Val Loss: 0.0927 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 02:32:32,678 - INFO - Epoch 10/50 | Train Loss: 0.0653 | Val Loss: 0.0666 | Accuracy: 0.9747 | F1 (weighted): 0.9655
+2025-03-03 02:33:02,581 - INFO - Epoch 15/50 | Train Loss: 0.0492 | Val Loss: 0.0522 | Accuracy: 0.9793 | F1 (weighted): 0.9748
+2025-03-03 02:33:32,311 - INFO - Epoch 20/50 | Train Loss: 0.0393 | Val Loss: 0.0432 | Accuracy: 0.9810 | F1 (weighted): 0.9783
+2025-03-03 02:34:02,097 - INFO - Epoch 25/50 | Train Loss: 0.0341 | Val Loss: 0.0381 | Accuracy: 0.9827 | F1 (weighted): 0.9793
+2025-03-03 02:34:31,808 - INFO - Epoch 30/50 | Train Loss: 0.0294 | Val Loss: 0.0344 | Accuracy: 0.9863 | F1 (weighted): 0.9846
+2025-03-03 02:35:01,724 - INFO - Epoch 35/50 | Train Loss: 0.0270 | Val Loss: 0.0325 | Accuracy: 0.9853 | F1 (weighted): 0.9847
+2025-03-03 02:35:31,659 - INFO - Epoch 40/50 | Train Loss: 0.0241 | Val Loss: 0.0319 | Accuracy: 0.9860 | F1 (weighted): 0.9858
+2025-03-03 02:36:01,545 - INFO - Epoch 45/50 | Train Loss: 0.0230 | Val Loss: 0.0299 | Accuracy: 0.9890 | F1 (weighted): 0.9891
+2025-03-03 02:36:31,395 - INFO - Epoch 50/50 | Train Loss: 0.0213 | Val Loss: 0.0290 | Accuracy: 0.9883 | F1 (weighted): 0.9879
+2025-03-03 02:36:31,423 - INFO - 试验 #10 超参数: {'d_model': 44, 'n_layer': 4, 'd_state': 56, 'expand': 1, 'd_conv': 8, 'learning_rate': 0.00045230036790196306}
+2025-03-03 02:36:31,423 - INFO - 使用 CPU
+2025-03-03 02:36:33,796 - INFO - Epoch 1/50 | Train Loss: 0.7114 | Val Loss: 0.1727 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 02:36:42,749 - INFO - Epoch 5/50 | Train Loss: 0.0647 | Val Loss: 0.0588 | Accuracy: 0.9773 | F1 (weighted): 0.9697
+2025-03-03 02:36:54,044 - INFO - Epoch 10/50 | Train Loss: 0.0305 | Val Loss: 0.0318 | Accuracy: 0.9863 | F1 (weighted): 0.9851
+2025-03-03 02:37:05,408 - INFO - Epoch 15/50 | Train Loss: 0.0227 | Val Loss: 0.0284 | Accuracy: 0.9873 | F1 (weighted): 0.9878
+2025-03-03 02:37:16,623 - INFO - Epoch 20/50 | Train Loss: 0.0171 | Val Loss: 0.0339 | Accuracy: 0.9880 | F1 (weighted): 0.9871
+2025-03-03 02:37:27,756 - INFO - Epoch 25/50 | Train Loss: 0.0128 | Val Loss: 0.0298 | Accuracy: 0.9893 | F1 (weighted): 0.9886
+2025-03-03 02:37:38,953 - INFO - Epoch 30/50 | Train Loss: 0.0147 | Val Loss: 0.0294 | Accuracy: 0.9883 | F1 (weighted): 0.9876
+2025-03-03 02:37:47,902 - INFO - 早停触发，在第 34 轮停止训练
+2025-03-03 02:37:47,931 - INFO - 试验 #11 超参数: {'d_model': 163, 'n_layer': 4, 'd_state': 8, 'expand': 3, 'd_conv': 2, 'learning_rate': 0.000271543861027849}
+2025-03-03 02:37:47,932 - INFO - 使用 CPU
+2025-03-03 02:37:51,407 - INFO - Epoch 1/50 | Train Loss: 0.1980 | Val Loss: 0.0794 | Accuracy: 0.9720 | F1 (weighted): 0.9588
+2025-03-03 02:38:05,309 - INFO - Epoch 5/50 | Train Loss: 0.0350 | Val Loss: 0.0439 | Accuracy: 0.9817 | F1 (weighted): 0.9799
+2025-03-03 02:38:22,365 - INFO - Epoch 10/50 | Train Loss: 0.0372 | Val Loss: 0.0349 | Accuracy: 0.9877 | F1 (weighted): 0.9875
+2025-03-03 02:38:39,491 - INFO - Epoch 15/50 | Train Loss: 0.0291 | Val Loss: 0.0327 | Accuracy: 0.9860 | F1 (weighted): 0.9845
+2025-03-03 02:38:56,684 - INFO - Epoch 20/50 | Train Loss: 0.0171 | Val Loss: 0.0301 | Accuracy: 0.9883 | F1 (weighted): 0.9885
+2025-03-03 02:39:13,997 - INFO - Epoch 25/50 | Train Loss: 0.0143 | Val Loss: 0.0292 | Accuracy: 0.9890 | F1 (weighted): 0.9882
+2025-03-03 02:39:28,181 - INFO - 早停触发，在第 29 轮停止训练
+2025-03-03 02:39:28,212 - INFO - 试验 #12 超参数: {'d_model': 192, 'n_layer': 3, 'd_state': 46, 'expand': 1, 'd_conv': 7, 'learning_rate': 0.0008425491067366954}
+2025-03-03 02:39:28,213 - INFO - 使用 CPU
+2025-03-03 02:39:33,986 - INFO - Epoch 1/50 | Train Loss: 0.1941 | Val Loss: 0.0704 | Accuracy: 0.9730 | F1 (weighted): 0.9667
+2025-03-03 02:39:57,057 - INFO - Epoch 5/50 | Train Loss: 0.0363 | Val Loss: 0.0374 | Accuracy: 0.9853 | F1 (weighted): 0.9831
+2025-03-03 02:40:25,989 - INFO - Epoch 10/50 | Train Loss: 0.0267 | Val Loss: 0.0327 | Accuracy: 0.9887 | F1 (weighted): 0.9875
+2025-03-03 02:40:54,806 - INFO - Epoch 15/50 | Train Loss: 0.0219 | Val Loss: 0.0272 | Accuracy: 0.9890 | F1 (weighted): 0.9894
+2025-03-03 02:41:23,763 - INFO - Epoch 20/50 | Train Loss: 0.0217 | Val Loss: 0.0257 | Accuracy: 0.9903 | F1 (weighted): 0.9902
+2025-03-03 02:41:52,571 - INFO - Epoch 25/50 | Train Loss: 0.0241 | Val Loss: 0.0321 | Accuracy: 0.9897 | F1 (weighted): 0.9890
+2025-03-03 02:42:21,432 - INFO - Epoch 30/50 | Train Loss: 0.0107 | Val Loss: 0.0290 | Accuracy: 0.9903 | F1 (weighted): 0.9899
+2025-03-03 02:42:50,409 - INFO - Epoch 35/50 | Train Loss: 0.0102 | Val Loss: 0.0278 | Accuracy: 0.9907 | F1 (weighted): 0.9905
+2025-03-03 02:43:02,193 - INFO - 早停触发，在第 37 轮停止训练
+2025-03-03 02:43:02,222 - INFO - 试验 #13 超参数: {'d_model': 125, 'n_layer': 4, 'd_state': 43, 'expand': 2, 'd_conv': 2, 'learning_rate': 2.992757785257461e-05}
+2025-03-03 02:43:02,223 - INFO - 使用 CPU
+2025-03-03 02:43:07,278 - INFO - Epoch 1/50 | Train Loss: 1.0606 | Val Loss: 0.6226 | Accuracy: 0.9057 | F1 (weighted): 0.9245
+2025-03-03 02:43:27,463 - INFO - Epoch 5/50 | Train Loss: 0.0907 | Val Loss: 0.0858 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 02:43:53,053 - INFO - Epoch 10/50 | Train Loss: 0.0474 | Val Loss: 0.0524 | Accuracy: 0.9810 | F1 (weighted): 0.9780
+2025-03-03 02:44:19,150 - INFO - Epoch 15/50 | Train Loss: 0.0310 | Val Loss: 0.0363 | Accuracy: 0.9860 | F1 (weighted): 0.9846
+2025-03-03 02:44:45,035 - INFO - Epoch 20/50 | Train Loss: 0.0226 | Val Loss: 0.0288 | Accuracy: 0.9877 | F1 (weighted): 0.9873
+2025-03-03 02:45:10,834 - INFO - Epoch 25/50 | Train Loss: 0.0165 | Val Loss: 0.0238 | Accuracy: 0.9907 | F1 (weighted): 0.9901
+2025-03-03 02:45:36,567 - INFO - Epoch 30/50 | Train Loss: 0.0137 | Val Loss: 0.0243 | Accuracy: 0.9913 | F1 (weighted): 0.9908
+2025-03-03 02:46:02,460 - INFO - Epoch 35/50 | Train Loss: 0.0103 | Val Loss: 0.0228 | Accuracy: 0.9910 | F1 (weighted): 0.9907
+2025-03-03 02:46:28,151 - INFO - Epoch 40/50 | Train Loss: 0.0084 | Val Loss: 0.0226 | Accuracy: 0.9910 | F1 (weighted): 0.9912
+2025-03-03 02:46:54,019 - INFO - Epoch 45/50 | Train Loss: 0.0096 | Val Loss: 0.0285 | Accuracy: 0.9907 | F1 (weighted): 0.9907
+2025-03-03 02:47:19,826 - INFO - 早停触发，在第 50 轮停止训练
+2025-03-03 02:47:19,853 - INFO - 试验 #14 超参数: {'d_model': 248, 'n_layer': 3, 'd_state': 10, 'expand': 3, 'd_conv': 6, 'learning_rate': 0.0001779302335960174}
+2025-03-03 02:47:19,854 - INFO - 使用 CPU
+2025-03-03 02:47:34,339 - INFO - Epoch 1/50 | Train Loss: 0.2548 | Val Loss: 0.0806 | Accuracy: 0.9720 | F1 (weighted): 0.9591
+2025-03-03 02:48:32,405 - INFO - Epoch 5/50 | Train Loss: 0.0374 | Val Loss: 0.0417 | Accuracy: 0.9813 | F1 (weighted): 0.9785
+2025-03-03 02:49:44,868 - INFO - Epoch 10/50 | Train Loss: 0.0266 | Val Loss: 0.0276 | Accuracy: 0.9883 | F1 (weighted): 0.9886
+2025-03-03 02:50:57,512 - INFO - Epoch 15/50 | Train Loss: 0.0198 | Val Loss: 0.0302 | Accuracy: 0.9877 | F1 (weighted): 0.9877
+2025-03-03 02:52:10,169 - INFO - Epoch 20/50 | Train Loss: 0.0192 | Val Loss: 0.0401 | Accuracy: 0.9850 | F1 (weighted): 0.9847
+2025-03-03 02:53:22,585 - INFO - Epoch 25/50 | Train Loss: 0.0163 | Val Loss: 0.0311 | Accuracy: 0.9893 | F1 (weighted): 0.9889
+2025-03-03 02:54:35,088 - INFO - Epoch 30/50 | Train Loss: 0.0142 | Val Loss: 0.0341 | Accuracy: 0.9873 | F1 (weighted): 0.9881
+2025-03-03 02:55:47,665 - INFO - Epoch 35/50 | Train Loss: 0.0117 | Val Loss: 0.0381 | Accuracy: 0.9870 | F1 (weighted): 0.9875
+2025-03-03 02:56:16,577 - INFO - 早停触发，在第 37 轮停止训练
+2025-03-03 02:56:16,610 - INFO - 试验 #15 超参数: {'d_model': 172, 'n_layer': 1, 'd_state': 62, 'expand': 2, 'd_conv': 2, 'learning_rate': 3.4794975676023426e-05}
+2025-03-03 02:56:16,611 - INFO - 使用 CPU
+2025-03-03 02:56:19,111 - INFO - Epoch 1/50 | Train Loss: 1.0768 | Val Loss: 0.5678 | Accuracy: 0.9660 | F1 (weighted): 0.9560
+2025-03-03 02:56:29,085 - INFO - Epoch 5/50 | Train Loss: 0.0891 | Val Loss: 0.0877 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 02:56:41,549 - INFO - Epoch 10/50 | Train Loss: 0.0584 | Val Loss: 0.0616 | Accuracy: 0.9740 | F1 (weighted): 0.9636
+2025-03-03 02:56:54,158 - INFO - Epoch 15/50 | Train Loss: 0.0435 | Val Loss: 0.0466 | Accuracy: 0.9797 | F1 (weighted): 0.9759
+2025-03-03 02:57:06,736 - INFO - Epoch 20/50 | Train Loss: 0.0355 | Val Loss: 0.0394 | Accuracy: 0.9857 | F1 (weighted): 0.9830
+2025-03-03 02:57:19,275 - INFO - Epoch 25/50 | Train Loss: 0.0302 | Val Loss: 0.0394 | Accuracy: 0.9850 | F1 (weighted): 0.9825
+2025-03-03 02:57:31,733 - INFO - Epoch 30/50 | Train Loss: 0.0288 | Val Loss: 0.0334 | Accuracy: 0.9867 | F1 (weighted): 0.9858
+2025-03-03 02:57:44,226 - INFO - Epoch 35/50 | Train Loss: 0.0246 | Val Loss: 0.0325 | Accuracy: 0.9860 | F1 (weighted): 0.9851
+2025-03-03 02:57:56,828 - INFO - Epoch 40/50 | Train Loss: 0.0237 | Val Loss: 0.0313 | Accuracy: 0.9873 | F1 (weighted): 0.9870
+2025-03-03 02:58:09,318 - INFO - Epoch 45/50 | Train Loss: 0.0215 | Val Loss: 0.0295 | Accuracy: 0.9887 | F1 (weighted): 0.9882
+2025-03-03 02:58:21,984 - INFO - Epoch 50/50 | Train Loss: 0.0231 | Val Loss: 0.0304 | Accuracy: 0.9870 | F1 (weighted): 0.9871
+2025-03-03 02:58:22,012 - INFO - 试验 #16 超参数: {'d_model': 128, 'n_layer': 4, 'd_state': 39, 'expand': 3, 'd_conv': 5, 'learning_rate': 0.00010526052593563161}
+2025-03-03 02:58:22,013 - INFO - 使用 CPU
+2025-03-03 02:58:31,881 - INFO - Epoch 1/50 | Train Loss: 0.5435 | Val Loss: 0.1114 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 02:59:11,126 - INFO - Epoch 5/50 | Train Loss: 0.0469 | Val Loss: 0.0455 | Accuracy: 0.9830 | F1 (weighted): 0.9796
+2025-03-03 03:00:00,470 - INFO - Epoch 10/50 | Train Loss: 0.0269 | Val Loss: 0.0293 | Accuracy: 0.9870 | F1 (weighted): 0.9867
+2025-03-03 03:00:49,619 - INFO - Epoch 15/50 | Train Loss: 0.0171 | Val Loss: 0.0237 | Accuracy: 0.9900 | F1 (weighted): 0.9896
+2025-03-03 03:01:38,707 - INFO - Epoch 20/50 | Train Loss: 0.0137 | Val Loss: 0.0276 | Accuracy: 0.9873 | F1 (weighted): 0.9870
+2025-03-03 03:02:27,699 - INFO - Epoch 25/50 | Train Loss: 0.0134 | Val Loss: 0.0230 | Accuracy: 0.9907 | F1 (weighted): 0.9905
+2025-03-03 03:03:16,753 - INFO - Epoch 30/50 | Train Loss: 0.0113 | Val Loss: 0.0263 | Accuracy: 0.9890 | F1 (weighted): 0.9892
+2025-03-03 03:04:05,822 - INFO - Epoch 35/50 | Train Loss: 0.0099 | Val Loss: 0.0261 | Accuracy: 0.9910 | F1 (weighted): 0.9910
+2025-03-03 03:04:55,013 - INFO - Epoch 40/50 | Train Loss: 0.0098 | Val Loss: 0.0260 | Accuracy: 0.9893 | F1 (weighted): 0.9895
+2025-03-03 03:05:34,648 - INFO - 早停触发，在第 44 轮停止训练
+2025-03-03 03:05:34,680 - INFO - 试验 #17 超参数: {'d_model': 218, 'n_layer': 3, 'd_state': 18, 'expand': 1, 'd_conv': 4, 'learning_rate': 0.0003889748860109163}
+2025-03-03 03:05:34,681 - INFO - 使用 CPU
+2025-03-03 03:05:38,004 - INFO - Epoch 1/50 | Train Loss: 0.2177 | Val Loss: 0.0785 | Accuracy: 0.9720 | F1 (weighted): 0.9589
+2025-03-03 03:05:50,969 - INFO - Epoch 5/50 | Train Loss: 0.0369 | Val Loss: 0.0492 | Accuracy: 0.9790 | F1 (weighted): 0.9757
+2025-03-03 03:06:07,120 - INFO - Epoch 10/50 | Train Loss: 0.0266 | Val Loss: 0.0300 | Accuracy: 0.9893 | F1 (weighted): 0.9886
+2025-03-03 03:06:23,306 - INFO - Epoch 15/50 | Train Loss: 0.0230 | Val Loss: 0.0346 | Accuracy: 0.9863 | F1 (weighted): 0.9869
+2025-03-03 03:06:29,760 - INFO - 早停触发，在第 17 轮停止训练
+2025-03-03 03:06:29,787 - INFO - 试验 #18 超参数: {'d_model': 199, 'n_layer': 2, 'd_state': 54, 'expand': 3, 'd_conv': 2, 'learning_rate': 0.0009339700327278629}
+2025-03-03 03:06:29,788 - INFO - 使用 CPU
+2025-03-03 03:06:36,964 - INFO - Epoch 1/50 | Train Loss: 0.1524 | Val Loss: 0.0860 | Accuracy: 0.9753 | F1 (weighted): 0.9683
+2025-03-03 03:07:05,752 - INFO - Epoch 5/50 | Train Loss: 0.0418 | Val Loss: 0.0549 | Accuracy: 0.9797 | F1 (weighted): 0.9741
+2025-03-03 03:07:41,810 - INFO - Epoch 10/50 | Train Loss: 0.0345 | Val Loss: 0.0427 | Accuracy: 0.9823 | F1 (weighted): 0.9817
+2025-03-03 03:08:17,743 - INFO - Epoch 15/50 | Train Loss: 0.0232 | Val Loss: 0.0279 | Accuracy: 0.9883 | F1 (weighted): 0.9878
+2025-03-03 03:08:53,616 - INFO - Epoch 20/50 | Train Loss: 0.0201 | Val Loss: 0.0307 | Accuracy: 0.9880 | F1 (weighted): 0.9877
+2025-03-03 03:09:29,567 - INFO - 早停触发，在第 25 轮停止训练
+2025-03-03 03:09:29,595 - INFO - 试验 #19 超参数: {'d_model': 99, 'n_layer': 1, 'd_state': 36, 'expand': 2, 'd_conv': 6, 'learning_rate': 0.00012316080905691853}
+2025-03-03 03:09:29,596 - INFO - 使用 CPU
+2025-03-03 03:09:31,602 - INFO - Epoch 1/50 | Train Loss: 1.1068 | Val Loss: 0.5122 | Accuracy: 0.9457 | F1 (weighted): 0.9456
+2025-03-03 03:09:39,203 - INFO - Epoch 5/50 | Train Loss: 0.0767 | Val Loss: 0.0748 | Accuracy: 0.9743 | F1 (weighted): 0.9644
+2025-03-03 03:09:48,663 - INFO - Epoch 10/50 | Train Loss: 0.0446 | Val Loss: 0.0497 | Accuracy: 0.9810 | F1 (weighted): 0.9777
+2025-03-03 03:09:58,101 - INFO - Epoch 15/50 | Train Loss: 0.0320 | Val Loss: 0.0364 | Accuracy: 0.9853 | F1 (weighted): 0.9841
+2025-03-03 03:10:07,640 - INFO - Epoch 20/50 | Train Loss: 0.0261 | Val Loss: 0.0310 | Accuracy: 0.9887 | F1 (weighted): 0.9869
+2025-03-03 03:10:17,116 - INFO - Epoch 25/50 | Train Loss: 0.0217 | Val Loss: 0.0275 | Accuracy: 0.9897 | F1 (weighted): 0.9891
+2025-03-03 03:10:26,573 - INFO - Epoch 30/50 | Train Loss: 0.0200 | Val Loss: 0.0263 | Accuracy: 0.9893 | F1 (weighted): 0.9889
+2025-03-03 03:10:36,026 - INFO - Epoch 35/50 | Train Loss: 0.0182 | Val Loss: 0.0264 | Accuracy: 0.9880 | F1 (weighted): 0.9872
+2025-03-03 03:10:45,526 - INFO - Epoch 40/50 | Train Loss: 0.0177 | Val Loss: 0.0238 | Accuracy: 0.9900 | F1 (weighted): 0.9900
+2025-03-03 03:10:54,968 - INFO - Epoch 45/50 | Train Loss: 0.0143 | Val Loss: 0.0243 | Accuracy: 0.9897 | F1 (weighted): 0.9895
+2025-03-03 03:11:02,564 - INFO - 早停触发，在第 49 轮停止训练
+2025-03-03 03:11:02,594 - INFO - 试验 #20 超参数: {'d_model': 149, 'n_layer': 4, 'd_state': 26, 'expand': 1, 'd_conv': 4, 'learning_rate': 0.0002319011702941199}
+2025-03-03 03:11:02,595 - INFO - 使用 CPU
+2025-03-03 03:11:06,026 - INFO - Epoch 1/50 | Train Loss: 0.3816 | Val Loss: 0.1008 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 03:11:19,796 - INFO - Epoch 5/50 | Train Loss: 0.0421 | Val Loss: 0.0459 | Accuracy: 0.9813 | F1 (weighted): 0.9793
+2025-03-03 03:11:36,832 - INFO - Epoch 10/50 | Train Loss: 0.0307 | Val Loss: 0.0305 | Accuracy: 0.9877 | F1 (weighted): 0.9862
+2025-03-03 03:11:53,792 - INFO - Epoch 15/50 | Train Loss: 0.0218 | Val Loss: 0.0302 | Accuracy: 0.9887 | F1 (weighted): 0.9885
+2025-03-03 03:12:10,812 - INFO - Epoch 20/50 | Train Loss: 0.0174 | Val Loss: 0.0298 | Accuracy: 0.9900 | F1 (weighted): 0.9895
+2025-03-03 03:12:27,975 - INFO - Epoch 25/50 | Train Loss: 0.0175 | Val Loss: 0.0307 | Accuracy: 0.9890 | F1 (weighted): 0.9888
+2025-03-03 03:12:41,596 - INFO - 早停触发，在第 29 轮停止训练
+2025-03-03 03:12:41,627 - INFO - 试验 #21 超参数: {'d_model': 42, 'n_layer': 4, 'd_state': 52, 'expand': 1, 'd_conv': 8, 'learning_rate': 0.0004855841851518269}
+2025-03-03 03:12:41,628 - INFO - 使用 CPU
+2025-03-03 03:12:43,823 - INFO - Epoch 1/50 | Train Loss: 0.7391 | Val Loss: 0.1620 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 03:12:52,503 - INFO - Epoch 5/50 | Train Loss: 0.0563 | Val Loss: 0.0565 | Accuracy: 0.9757 | F1 (weighted): 0.9727
+2025-03-03 03:13:03,380 - INFO - Epoch 10/50 | Train Loss: 0.0305 | Val Loss: 0.0416 | Accuracy: 0.9843 | F1 (weighted): 0.9830
+2025-03-03 03:13:14,218 - INFO - Epoch 15/50 | Train Loss: 0.0278 | Val Loss: 0.0352 | Accuracy: 0.9847 | F1 (weighted): 0.9840
+2025-03-03 03:13:25,152 - INFO - Epoch 20/50 | Train Loss: 0.0190 | Val Loss: 0.0322 | Accuracy: 0.9880 | F1 (weighted): 0.9887
+2025-03-03 03:13:36,005 - INFO - Epoch 25/50 | Train Loss: 0.0142 | Val Loss: 0.0349 | Accuracy: 0.9877 | F1 (weighted): 0.9882
+2025-03-03 03:13:46,868 - INFO - Epoch 30/50 | Train Loss: 0.0141 | Val Loss: 0.0306 | Accuracy: 0.9887 | F1 (weighted): 0.9881
+2025-03-03 03:13:57,679 - INFO - Epoch 35/50 | Train Loss: 0.0164 | Val Loss: 0.0244 | Accuracy: 0.9910 | F1 (weighted): 0.9912
+2025-03-03 03:14:08,499 - INFO - Epoch 40/50 | Train Loss: 0.0117 | Val Loss: 0.0254 | Accuracy: 0.9897 | F1 (weighted): 0.9898
+2025-03-03 03:14:19,347 - INFO - Epoch 45/50 | Train Loss: 0.0103 | Val Loss: 0.0410 | Accuracy: 0.9890 | F1 (weighted): 0.9896
+2025-03-03 03:14:30,574 - INFO - Epoch 50/50 | Train Loss: 0.0090 | Val Loss: 0.0251 | Accuracy: 0.9907 | F1 (weighted): 0.9909
+2025-03-03 03:14:30,609 - INFO - 试验 #22 超参数: {'d_model': 37, 'n_layer': 4, 'd_state': 64, 'expand': 1, 'd_conv': 8, 'learning_rate': 0.0004709764899061602}
+2025-03-03 03:14:30,610 - INFO - 使用 CPU
+2025-03-03 03:14:32,926 - INFO - Epoch 1/50 | Train Loss: 0.8046 | Val Loss: 0.2243 | Accuracy: 0.9710 | F1 (weighted): 0.9570
+2025-03-03 03:14:41,396 - INFO - Epoch 5/50 | Train Loss: 0.0701 | Val Loss: 0.0650 | Accuracy: 0.9770 | F1 (weighted): 0.9712
+2025-03-03 03:14:51,711 - INFO - Epoch 10/50 | Train Loss: 0.0354 | Val Loss: 0.0390 | Accuracy: 0.9857 | F1 (weighted): 0.9854
+2025-03-03 03:15:02,115 - INFO - Epoch 15/50 | Train Loss: 0.0278 | Val Loss: 0.0326 | Accuracy: 0.9877 | F1 (weighted): 0.9884
+2025-03-03 03:15:13,485 - INFO - Epoch 20/50 | Train Loss: 0.0209 | Val Loss: 0.0319 | Accuracy: 0.9877 | F1 (weighted): 0.9873
+2025-03-03 03:15:24,239 - INFO - Epoch 25/50 | Train Loss: 0.0154 | Val Loss: 0.0262 | Accuracy: 0.9900 | F1 (weighted): 0.9898
+2025-03-03 03:15:34,585 - INFO - Epoch 30/50 | Train Loss: 0.0169 | Val Loss: 0.0318 | Accuracy: 0.9880 | F1 (weighted): 0.9882
+2025-03-03 03:15:45,057 - INFO - 早停触发，在第 35 轮停止训练
+2025-03-03 03:15:45,087 - INFO - 试验 #23 超参数: {'d_model': 67, 'n_layer': 3, 'd_state': 52, 'expand': 2, 'd_conv': 7, 'learning_rate': 0.00028753262583200467}
+2025-03-03 03:15:45,088 - INFO - 使用 CPU
+2025-03-03 03:15:49,454 - INFO - Epoch 1/50 | Train Loss: 0.5897 | Val Loss: 0.1261 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 03:16:06,581 - INFO - Epoch 5/50 | Train Loss: 0.0476 | Val Loss: 0.0466 | Accuracy: 0.9807 | F1 (weighted): 0.9794
+2025-03-03 03:16:27,928 - INFO - Epoch 10/50 | Train Loss: 0.0276 | Val Loss: 0.0288 | Accuracy: 0.9907 | F1 (weighted): 0.9907
+2025-03-03 03:16:49,391 - INFO - Epoch 15/50 | Train Loss: 0.0193 | Val Loss: 0.0315 | Accuracy: 0.9880 | F1 (weighted): 0.9866
+2025-03-03 03:17:10,796 - INFO - Epoch 20/50 | Train Loss: 0.0213 | Val Loss: 0.0247 | Accuracy: 0.9910 | F1 (weighted): 0.9905
+2025-03-03 03:17:32,124 - INFO - Epoch 25/50 | Train Loss: 0.0116 | Val Loss: 0.0321 | Accuracy: 0.9890 | F1 (weighted): 0.9886
+2025-03-03 03:17:53,596 - INFO - Epoch 30/50 | Train Loss: 0.0119 | Val Loss: 0.0253 | Accuracy: 0.9900 | F1 (weighted): 0.9894
+2025-03-03 03:18:15,000 - INFO - Epoch 35/50 | Train Loss: 0.0095 | Val Loss: 0.0260 | Accuracy: 0.9910 | F1 (weighted): 0.9908
+2025-03-03 03:18:32,104 - INFO - 早停触发，在第 39 轮停止训练
+2025-03-03 03:18:32,140 - INFO - 试验 #24 超参数: {'d_model': 105, 'n_layer': 4, 'd_state': 58, 'expand': 1, 'd_conv': 7, 'learning_rate': 0.0007179475819157286}
+2025-03-03 03:18:32,141 - INFO - 使用 CPU
+2025-03-03 03:18:36,927 - INFO - Epoch 1/50 | Train Loss: 0.3007 | Val Loss: 0.0915 | Accuracy: 0.9723 | F1 (weighted): 0.9597
+2025-03-03 03:18:55,948 - INFO - Epoch 5/50 | Train Loss: 0.0399 | Val Loss: 0.0370 | Accuracy: 0.9837 | F1 (weighted): 0.9821
+2025-03-03 03:19:19,821 - INFO - Epoch 10/50 | Train Loss: 0.0300 | Val Loss: 0.0370 | Accuracy: 0.9843 | F1 (weighted): 0.9852
+2025-03-03 03:19:43,542 - INFO - Epoch 15/50 | Train Loss: 0.0209 | Val Loss: 0.0279 | Accuracy: 0.9890 | F1 (weighted): 0.9882
+2025-03-03 03:20:07,441 - INFO - Epoch 20/50 | Train Loss: 0.0153 | Val Loss: 0.0276 | Accuracy: 0.9903 | F1 (weighted): 0.9897
+2025-03-03 03:20:12,228 - INFO - 早停触发，在第 21 轮停止训练
+2025-03-03 03:20:12,267 - INFO - 试验 #25 超参数: {'d_model': 231, 'n_layer': 3, 'd_state': 39, 'expand': 2, 'd_conv': 5, 'learning_rate': 0.00036907470986932445}
+2025-03-03 03:20:12,267 - INFO - 使用 CPU
+2025-03-03 03:20:21,536 - INFO - Epoch 1/50 | Train Loss: 0.2119 | Val Loss: 0.0727 | Accuracy: 0.9737 | F1 (weighted): 0.9625
+2025-03-03 03:20:57,985 - INFO - Epoch 5/50 | Train Loss: 0.0320 | Val Loss: 0.0334 | Accuracy: 0.9880 | F1 (weighted): 0.9868
+2025-03-03 03:21:43,602 - INFO - Epoch 10/50 | Train Loss: 0.0246 | Val Loss: 0.0277 | Accuracy: 0.9877 | F1 (weighted): 0.9866
+2025-03-03 03:22:29,146 - INFO - Epoch 15/50 | Train Loss: 0.0245 | Val Loss: 0.0281 | Accuracy: 0.9877 | F1 (weighted): 0.9876
+2025-03-03 03:23:14,755 - INFO - Epoch 20/50 | Train Loss: 0.0208 | Val Loss: 0.0439 | Accuracy: 0.9850 | F1 (weighted): 0.9838
+2025-03-03 03:24:00,370 - INFO - Epoch 25/50 | Train Loss: 0.0148 | Val Loss: 0.0269 | Accuracy: 0.9907 | F1 (weighted): 0.9906
+2025-03-03 03:24:46,016 - INFO - Epoch 30/50 | Train Loss: 0.0114 | Val Loss: 0.0400 | Accuracy: 0.9870 | F1 (weighted): 0.9871
+2025-03-03 03:25:31,725 - INFO - Epoch 35/50 | Train Loss: 0.0152 | Val Loss: 0.0338 | Accuracy: 0.9897 | F1 (weighted): 0.9893
+2025-03-03 03:26:17,357 - INFO - Epoch 40/50 | Train Loss: 0.0130 | Val Loss: 0.0224 | Accuracy: 0.9910 | F1 (weighted): 0.9910
+2025-03-03 03:27:02,934 - INFO - Epoch 45/50 | Train Loss: 0.0101 | Val Loss: 0.0346 | Accuracy: 0.9887 | F1 (weighted): 0.9889
+2025-03-03 03:27:48,455 - INFO - 早停触发，在第 50 轮停止训练
+2025-03-03 03:27:48,494 - INFO - 试验 #26 超参数: {'d_model': 165, 'n_layer': 2, 'd_state': 15, 'expand': 3, 'd_conv': 6, 'learning_rate': 0.0001913344168843215}
+2025-03-03 03:27:48,495 - INFO - 使用 CPU
+2025-03-03 03:27:55,500 - INFO - Epoch 1/50 | Train Loss: 0.4197 | Val Loss: 0.0959 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 03:28:23,266 - INFO - Epoch 5/50 | Train Loss: 0.0400 | Val Loss: 0.0404 | Accuracy: 0.9827 | F1 (weighted): 0.9798
+2025-03-03 03:28:58,027 - INFO - Epoch 10/50 | Train Loss: 0.0273 | Val Loss: 0.0331 | Accuracy: 0.9860 | F1 (weighted): 0.9842
+2025-03-03 03:29:33,005 - INFO - Epoch 15/50 | Train Loss: 0.0190 | Val Loss: 0.0264 | Accuracy: 0.9887 | F1 (weighted): 0.9884
+2025-03-03 03:30:08,003 - INFO - Epoch 20/50 | Train Loss: 0.0209 | Val Loss: 0.0258 | Accuracy: 0.9897 | F1 (weighted): 0.9896
+2025-03-03 03:30:42,801 - INFO - Epoch 25/50 | Train Loss: 0.0154 | Val Loss: 0.0402 | Accuracy: 0.9840 | F1 (weighted): 0.9841
+2025-03-03 03:31:03,661 - INFO - 早停触发，在第 28 轮停止训练
+2025-03-03 03:31:03,695 - INFO - 试验 #27 超参数: {'d_model': 56, 'n_layer': 4, 'd_state': 33, 'expand': 1, 'd_conv': 2, 'learning_rate': 0.0006082361944216529}
+2025-03-03 03:31:03,696 - INFO - 使用 CPU
+2025-03-03 03:31:05,097 - INFO - Epoch 1/50 | Train Loss: 0.4502 | Val Loss: 0.1234 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 03:31:10,753 - INFO - Epoch 5/50 | Train Loss: 0.0480 | Val Loss: 0.0588 | Accuracy: 0.9770 | F1 (weighted): 0.9699
+2025-03-03 03:31:17,497 - INFO - Epoch 10/50 | Train Loss: 0.0284 | Val Loss: 0.0366 | Accuracy: 0.9857 | F1 (weighted): 0.9844
+2025-03-03 03:31:24,371 - INFO - Epoch 15/50 | Train Loss: 0.0213 | Val Loss: 0.0297 | Accuracy: 0.9870 | F1 (weighted): 0.9867
+2025-03-03 03:31:31,245 - INFO - Epoch 20/50 | Train Loss: 0.0224 | Val Loss: 0.0257 | Accuracy: 0.9903 | F1 (weighted): 0.9906
+2025-03-03 03:31:38,036 - INFO - Epoch 25/50 | Train Loss: 0.0228 | Val Loss: 0.0284 | Accuracy: 0.9887 | F1 (weighted): 0.9886
+2025-03-03 03:31:44,917 - INFO - Epoch 30/50 | Train Loss: 0.0155 | Val Loss: 0.0252 | Accuracy: 0.9917 | F1 (weighted): 0.9914
+2025-03-03 03:31:49,016 - INFO - 早停触发，在第 33 轮停止训练
+2025-03-03 03:31:49,043 - INFO - 试验 #28 超参数: {'d_model': 139, 'n_layer': 3, 'd_state': 48, 'expand': 2, 'd_conv': 8, 'learning_rate': 1.9967928531955955e-05}
+2025-03-03 03:31:49,044 - INFO - 使用 CPU
+2025-03-03 03:31:57,489 - INFO - Epoch 1/50 | Train Loss: 1.1609 | Val Loss: 1.0321 | Accuracy: 0.5260 | F1 (weighted): 0.6713
+2025-03-03 03:32:31,167 - INFO - Epoch 5/50 | Train Loss: 0.1567 | Val Loss: 0.1376 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 03:33:13,284 - INFO - Epoch 10/50 | Train Loss: 0.0897 | Val Loss: 0.0895 | Accuracy: 0.9717 | F1 (weighted): 0.9580
+2025-03-03 03:33:55,370 - INFO - Epoch 15/50 | Train Loss: 0.0705 | Val Loss: 0.0724 | Accuracy: 0.9737 | F1 (weighted): 0.9640
+2025-03-03 03:34:37,556 - INFO - Epoch 20/50 | Train Loss: 0.0524 | Val Loss: 0.0569 | Accuracy: 0.9757 | F1 (weighted): 0.9693
+2025-03-03 03:35:19,831 - INFO - Epoch 25/50 | Train Loss: 0.0389 | Val Loss: 0.0429 | Accuracy: 0.9827 | F1 (weighted): 0.9805
+2025-03-03 03:36:02,258 - INFO - Epoch 30/50 | Train Loss: 0.0315 | Val Loss: 0.0357 | Accuracy: 0.9860 | F1 (weighted): 0.9846
+2025-03-03 03:36:44,560 - INFO - Epoch 35/50 | Train Loss: 0.0260 | Val Loss: 0.0311 | Accuracy: 0.9893 | F1 (weighted): 0.9888
+2025-03-03 03:37:26,672 - INFO - Epoch 40/50 | Train Loss: 0.0229 | Val Loss: 0.0281 | Accuracy: 0.9893 | F1 (weighted): 0.9891
+2025-03-03 03:38:08,841 - INFO - Epoch 45/50 | Train Loss: 0.0194 | Val Loss: 0.0272 | Accuracy: 0.9893 | F1 (weighted): 0.9893
+2025-03-03 03:38:50,890 - INFO - Epoch 50/50 | Train Loss: 0.0179 | Val Loss: 0.0248 | Accuracy: 0.9907 | F1 (weighted): 0.9907
+2025-03-03 03:38:50,920 - INFO - 试验 #29 超参数: {'d_model': 182, 'n_layer': 2, 'd_state': 42, 'expand': 4, 'd_conv': 3, 'learning_rate': 9.010561904423347e-05}
+2025-03-03 03:38:50,920 - INFO - 使用 CPU
+2025-03-03 03:39:00,687 - INFO - Epoch 1/50 | Train Loss: 0.4055 | Val Loss: 0.0928 | Accuracy: 0.9713 | F1 (weighted): 0.9572
+2025-03-03 03:39:39,498 - INFO - Epoch 5/50 | Train Loss: 0.0356 | Val Loss: 0.0466 | Accuracy: 0.9797 | F1 (weighted): 0.9746
+2025-03-03 03:40:28,025 - INFO - Epoch 10/50 | Train Loss: 0.0242 | Val Loss: 0.0286 | Accuracy: 0.9883 | F1 (weighted): 0.9872
+2025-03-03 03:41:16,444 - INFO - Epoch 15/50 | Train Loss: 0.0162 | Val Loss: 0.0256 | Accuracy: 0.9893 | F1 (weighted): 0.9889
+2025-03-03 03:42:04,910 - INFO - Epoch 20/50 | Train Loss: 0.0169 | Val Loss: 0.0289 | Accuracy: 0.9907 | F1 (weighted): 0.9908
+2025-03-03 03:42:53,494 - INFO - Epoch 25/50 | Train Loss: 0.0167 | Val Loss: 0.0230 | Accuracy: 0.9910 | F1 (weighted): 0.9908
+2025-03-03 03:43:41,972 - INFO - Epoch 30/50 | Train Loss: 0.0101 | Val Loss: 0.0265 | Accuracy: 0.9903 | F1 (weighted): 0.9907
+2025-03-03 03:44:30,421 - INFO - Epoch 35/50 | Train Loss: 0.0092 | Val Loss: 0.0241 | Accuracy: 0.9903 | F1 (weighted): 0.9897
+2025-03-03 03:45:19,103 - INFO - Epoch 40/50 | Train Loss: 0.0104 | Val Loss: 0.0259 | Accuracy: 0.9903 | F1 (weighted): 0.9900
+2025-03-03 03:45:57,836 - INFO - 早停触发，在第 44 轮停止训练
+2025-03-03 03:45:57,838 - INFO - 超参数优化完成！
+2025-03-03 03:45:57,838 - INFO - 最佳参数: {'d_model': 188, 'n_layer': 2, 'd_state': 35, 'expand': 4, 'd_conv': 2, 'learning_rate': 0.0002159059716967624}
+2025-03-03 03:45:57,838 - INFO - 最佳F1加权分数: 0.9932
+2025-03-03 03:45:57,857 - INFO - 最佳模型已保存到 mamba_hyperparameter_tuning\20250303_015415\best_model.pth
+2025-03-03 03:45:57,859 - INFO - 优化结果已保存到 mamba_hyperparameter_tuning\20250303_015415\optimization_results.json
+2025-03-03 03:45:58,712 - INFO - 参数重要性图已保存
+2025-03-03 03:45:58,885 - INFO - 优化历史图已保存
+2025-03-03 03:45:59,777 - WARNING - 绘制参数关系图失败: 'learning_rate'
+2025-03-03 03:45:59,777 - INFO - 使用最佳参数创建并训练完整模型...
+2025-03-03 03:45:59,778 - INFO - 使用 CPU
+2025-03-03 03:46:06,074 - INFO - 最终模型训练 - Epoch 1/100 | Train Loss: 0.2279 | Val Loss: 0.0752 | Accuracy: 0.9727 | F1 (weighted): 0.9629
+2025-03-03 03:47:02,342 - INFO - 最终模型训练 - Epoch 10/100 | Train Loss: 0.0264 | Val Loss: 0.0387 | Accuracy: 0.9837 | F1 (weighted): 0.9836
+2025-03-03 03:48:04,824 - INFO - 最终模型训练 - Epoch 20/100 | Train Loss: 0.0190 | Val Loss: 0.0310 | Accuracy: 0.9887 | F1 (weighted): 0.9889
+2025-03-03 03:49:07,410 - INFO - 最终模型训练 - Epoch 30/100 | Train Loss: 0.0108 | Val Loss: 0.0340 | Accuracy: 0.9863 | F1 (weighted): 0.9870
+2025-03-03 03:50:03,978 - INFO - 早停触发，在第 39 轮停止训练
+2025-03-03 03:50:03,985 - INFO - 最终模型已保存到 mamba_hyperparameter_tuning\20250303_015415\final_best_model.pth
+2025-03-03 03:50:03,985 - INFO - 超参数优化完成！
+2025-03-03 03:50:03,986 - INFO - 最佳参数: {'d_model': 188, 'n_layer': 2, 'd_state': 35, 'expand': 4, 'd_conv': 2, 'learning_rate': 0.0002159059716967624}
+2025-03-03 03:50:03,986 - INFO - 最佳F1加权分数: 0.9932

@@ -1,0 +1,523 @@
+{
+    "best_params": {
+        "d_model": 188,
+        "n_layer": 2,
+        "d_state": 35,
+        "expand": 4,
+        "d_conv": 2,
+        "learning_rate": 0.0002159059716967624
+    },
+    "best_score": 0.9932476302761093,
+    "all_trials": [
+        {
+            "trial": 0,
+            "params": {
+                "d_model": 88,
+                "n_layer": 2,
+                "d_state": 45,
+                "expand": 4,
+                "d_conv": 3,
+                "learning_rate": 1.0993127297485834e-05
+            },
+            "metrics": {
+                "accuracy": 0.9843333333333333,
+                "f1_macro": 0.697044785171799,
+                "f1_weighted": 0.9817671684585594,
+                "val_loss": 0.04299679398536682
+            }
+        },
+        {
+            "trial": 1,
+            "params": {
+                "d_model": 79,
+                "n_layer": 1,
+                "d_state": 31,
+                "expand": 3,
+                "d_conv": 4,
+                "learning_rate": 7.51427921469496e-05
+            },
+            "metrics": {
+                "accuracy": 0.9893333333333333,
+                "f1_macro": 0.832982400156475,
+                "f1_weighted": 0.9887291563524612,
+                "val_loss": 0.027298441156744957
+            }
+        },
+        {
+            "trial": 2,
+            "params": {
+                "d_model": 182,
+                "n_layer": 3,
+                "d_state": 30,
+                "expand": 4,
+                "d_conv": 3,
+                "learning_rate": 1.9787013688596005e-05
+            },
+            "metrics": {
+                "accuracy": 0.991,
+                "f1_macro": 0.8784607358512398,
+                "f1_weighted": 0.9911242031503497,
+                "val_loss": 0.02114817127585411
+            }
+        },
+        {
+            "trial": 3,
+            "params": {
+                "d_model": 161,
+                "n_layer": 4,
+                "d_state": 24,
+                "expand": 2,
+                "d_conv": 2,
+                "learning_rate": 2.615938472131361e-05
+            },
+            "metrics": {
+                "accuracy": 0.9923333333333333,
+                "f1_macro": 0.8968887580070923,
+                "f1_weighted": 0.9923192373140812,
+                "val_loss": 0.021961109712719917
+            }
+        },
+        {
+            "trial": 4,
+            "params": {
+                "d_model": 215,
+                "n_layer": 2,
+                "d_state": 23,
+                "expand": 2,
+                "d_conv": 3,
+                "learning_rate": 0.0001523986369791116
+            },
+            "metrics": {
+                "accuracy": 0.9916666666666667,
+                "f1_macro": 0.8654532312582802,
+                "f1_weighted": 0.99111801645139,
+                "val_loss": 0.020778296515345573
+            }
+        },
+        {
+            "trial": 5,
+            "params": {
+                "d_model": 150,
+                "n_layer": 2,
+                "d_state": 28,
+                "expand": 4,
+                "d_conv": 3,
+                "learning_rate": 4.984053363387716e-05
+            },
+            "metrics": {
+                "accuracy": 0.9913333333333333,
+                "f1_macro": 0.8662220397238426,
+                "f1_weighted": 0.9910774576100857,
+                "val_loss": 0.021480755880475044
+            }
+        },
+        {
+            "trial": 6,
+            "params": {
+                "d_model": 120,
+                "n_layer": 3,
+                "d_state": 18,
+                "expand": 2,
+                "d_conv": 4,
+                "learning_rate": 6.232898939171742e-05
+            },
+            "metrics": {
+                "accuracy": 0.9903333333333333,
+                "f1_macro": 0.863318671130458,
+                "f1_weighted": 0.9902282454698111,
+                "val_loss": 0.022653838619589806
+            }
+        },
+        {
+            "trial": 7,
+            "params": {
+                "d_model": 188,
+                "n_layer": 2,
+                "d_state": 35,
+                "expand": 4,
+                "d_conv": 2,
+                "learning_rate": 0.0002159059716967624
+            },
+            "metrics": {
+                "accuracy": 0.9933333333333333,
+                "f1_macro": 0.9072943899322506,
+                "f1_weighted": 0.9932476302761093,
+                "val_loss": 0.020810101181268692
+            }
+        },
+        {
+            "trial": 8,
+            "params": {
+                "d_model": 210,
+                "n_layer": 2,
+                "d_state": 22,
+                "expand": 4,
+                "d_conv": 5,
+                "learning_rate": 1.0019925591432721e-05
+            },
+            "metrics": {
+                "accuracy": 0.9863333333333333,
+                "f1_macro": 0.7657035033741839,
+                "f1_weighted": 0.9850818066823915,
+                "val_loss": 0.02817229926586151
+            }
+        },
+        {
+            "trial": 9,
+            "params": {
+                "d_model": 250,
+                "n_layer": 1,
+                "d_state": 35,
+                "expand": 4,
+                "d_conv": 3,
+                "learning_rate": 1.1963146888110933e-05
+            },
+            "metrics": {
+                "accuracy": 0.99,
+                "f1_macro": 0.8507759267517707,
+                "f1_weighted": 0.9896633491096237,
+                "val_loss": 0.028521139174699783
+            }
+        },
+        {
+            "trial": 10,
+            "params": {
+                "d_model": 44,
+                "n_layer": 4,
+                "d_state": 56,
+                "expand": 1,
+                "d_conv": 8,
+                "learning_rate": 0.00045230036790196306
+            },
+            "metrics": {
+                "accuracy": 0.9913333333333333,
+                "f1_macro": 0.8926240894100363,
+                "f1_weighted": 0.9915395259262785,
+                "val_loss": 0.024350609630346298
+            }
+        },
+        {
+            "trial": 11,
+            "params": {
+                "d_model": 163,
+                "n_layer": 4,
+                "d_state": 8,
+                "expand": 3,
+                "d_conv": 2,
+                "learning_rate": 0.000271543861027849
+            },
+            "metrics": {
+                "accuracy": 0.9893333333333333,
+                "f1_macro": 0.8376539278681397,
+                "f1_weighted": 0.989094637460818,
+                "val_loss": 0.02295002155005932
+            }
+        },
+        {
+            "trial": 12,
+            "params": {
+                "d_model": 192,
+                "n_layer": 3,
+                "d_state": 46,
+                "expand": 1,
+                "d_conv": 7,
+                "learning_rate": 0.0008425491067366954
+            },
+            "metrics": {
+                "accuracy": 0.99,
+                "f1_macro": 0.8526101184276583,
+                "f1_weighted": 0.9897383127474155,
+                "val_loss": 0.023794248700141907
+            }
+        },
+        {
+            "trial": 13,
+            "params": {
+                "d_model": 125,
+                "n_layer": 4,
+                "d_state": 43,
+                "expand": 2,
+                "d_conv": 2,
+                "learning_rate": 2.992757785257461e-05
+            },
+            "metrics": {
+                "accuracy": 0.991,
+                "f1_macro": 0.875488643282425,
+                "f1_weighted": 0.9911835613714366,
+                "val_loss": 0.022594863548874855
+            }
+        },
+        {
+            "trial": 14,
+            "params": {
+                "d_model": 248,
+                "n_layer": 3,
+                "d_state": 10,
+                "expand": 3,
+                "d_conv": 6,
+                "learning_rate": 0.0001779302335960174
+            },
+            "metrics": {
+                "accuracy": 0.9916666666666667,
+                "f1_macro": 0.8732922317734503,
+                "f1_weighted": 0.9912814458746929,
+                "val_loss": 0.02148711308836937
+            }
+        },
+        {
+            "trial": 15,
+            "params": {
+                "d_model": 172,
+                "n_layer": 1,
+                "d_state": 62,
+                "expand": 2,
+                "d_conv": 2,
+                "learning_rate": 3.4794975676023426e-05
+            },
+            "metrics": {
+                "accuracy": 0.9886666666666667,
+                "f1_macro": 0.8279380405762174,
+                "f1_weighted": 0.9881673513321579,
+                "val_loss": 0.029477300122380257
+            }
+        },
+        {
+            "trial": 16,
+            "params": {
+                "d_model": 128,
+                "n_layer": 4,
+                "d_state": 39,
+                "expand": 3,
+                "d_conv": 5,
+                "learning_rate": 0.00010526052593563161
+            },
+            "metrics": {
+                "accuracy": 0.9896666666666667,
+                "f1_macro": 0.8439190761424368,
+                "f1_weighted": 0.9896144893812925,
+                "val_loss": 0.02216113731265068
+            }
+        },
+        {
+            "trial": 17,
+            "params": {
+                "d_model": 218,
+                "n_layer": 3,
+                "d_state": 18,
+                "expand": 1,
+                "d_conv": 4,
+                "learning_rate": 0.0003889748860109163
+            },
+            "metrics": {
+                "accuracy": 0.988,
+                "f1_macro": 0.8114387697989573,
+                "f1_weighted": 0.9874054456961192,
+                "val_loss": 0.028890658169984818
+            }
+        },
+        {
+            "trial": 18,
+            "params": {
+                "d_model": 199,
+                "n_layer": 2,
+                "d_state": 54,
+                "expand": 3,
+                "d_conv": 2,
+                "learning_rate": 0.0009339700327278629
+            },
+            "metrics": {
+                "accuracy": 0.9883333333333333,
+                "f1_macro": 0.8272935229609322,
+                "f1_weighted": 0.9878127678775418,
+                "val_loss": 0.027921460568904877
+            }
+        },
+        {
+            "trial": 19,
+            "params": {
+                "d_model": 99,
+                "n_layer": 1,
+                "d_state": 36,
+                "expand": 2,
+                "d_conv": 6,
+                "learning_rate": 0.00012316080905691853
+            },
+            "metrics": {
+                "accuracy": 0.991,
+                "f1_macro": 0.8712258228467049,
+                "f1_weighted": 0.9908487180538774,
+                "val_loss": 0.023276954889297485
+            }
+        },
+        {
+            "trial": 20,
+            "params": {
+                "d_model": 149,
+                "n_layer": 4,
+                "d_state": 26,
+                "expand": 1,
+                "d_conv": 4,
+                "learning_rate": 0.0002319011702941199
+            },
+            "metrics": {
+                "accuracy": 0.9913333333333333,
+                "f1_macro": 0.8732533677608061,
+                "f1_weighted": 0.9911020672691264,
+                "val_loss": 0.023036276921629906
+            }
+        },
+        {
+            "trial": 21,
+            "params": {
+                "d_model": 42,
+                "n_layer": 4,
+                "d_state": 52,
+                "expand": 1,
+                "d_conv": 8,
+                "learning_rate": 0.0004855841851518269
+            },
+            "metrics": {
+                "accuracy": 0.9903333333333333,
+                "f1_macro": 0.8413990345975855,
+                "f1_weighted": 0.989983708380002,
+                "val_loss": 0.021833879873156548
+            }
+        },
+        {
+            "trial": 22,
+            "params": {
+                "d_model": 37,
+                "n_layer": 4,
+                "d_state": 64,
+                "expand": 1,
+                "d_conv": 8,
+                "learning_rate": 0.0004709764899061602
+            },
+            "metrics": {
+                "accuracy": 0.99,
+                "f1_macro": 0.8536468308276345,
+                "f1_weighted": 0.9898224821333574,
+                "val_loss": 0.02619917504489422
+            }
+        },
+        {
+            "trial": 23,
+            "params": {
+                "d_model": 67,
+                "n_layer": 3,
+                "d_state": 52,
+                "expand": 2,
+                "d_conv": 7,
+                "learning_rate": 0.00028753262583200467
+            },
+            "metrics": {
+                "accuracy": 0.991,
+                "f1_macro": 0.8583267913724484,
+                "f1_weighted": 0.9905881946149206,
+                "val_loss": 0.024272624403238297
+            }
+        },
+        {
+            "trial": 24,
+            "params": {
+                "d_model": 105,
+                "n_layer": 4,
+                "d_state": 58,
+                "expand": 1,
+                "d_conv": 7,
+                "learning_rate": 0.0007179475819157286
+            },
+            "metrics": {
+                "accuracy": 0.9906666666666667,
+                "f1_macro": 0.8669163118675657,
+                "f1_weighted": 0.990434968504194,
+                "val_loss": 0.023880431428551674
+            }
+        },
+        {
+            "trial": 25,
+            "params": {
+                "d_model": 231,
+                "n_layer": 3,
+                "d_state": 39,
+                "expand": 2,
+                "d_conv": 5,
+                "learning_rate": 0.00036907470986932445
+            },
+            "metrics": {
+                "accuracy": 0.991,
+                "f1_macro": 0.8672170076372374,
+                "f1_weighted": 0.9909859817506933,
+                "val_loss": 0.022448763251304626
+            }
+        },
+        {
+            "trial": 26,
+            "params": {
+                "d_model": 165,
+                "n_layer": 2,
+                "d_state": 15,
+                "expand": 3,
+                "d_conv": 6,
+                "learning_rate": 0.0001913344168843215
+            },
+            "metrics": {
+                "accuracy": 0.9896666666666667,
+                "f1_macro": 0.8428580237248182,
+                "f1_weighted": 0.988910521417598,
+                "val_loss": 0.02427753247320652
+            }
+        },
+        {
+            "trial": 27,
+            "params": {
+                "d_model": 56,
+                "n_layer": 4,
+                "d_state": 33,
+                "expand": 1,
+                "d_conv": 2,
+                "learning_rate": 0.0006082361944216529
+            },
+            "metrics": {
+                "accuracy": 0.9906666666666667,
+                "f1_macro": 0.8533898305084745,
+                "f1_weighted": 0.9901463790446842,
+                "val_loss": 0.025016970932483673
+            }
+        },
+        {
+            "trial": 28,
+            "params": {
+                "d_model": 139,
+                "n_layer": 3,
+                "d_state": 48,
+                "expand": 2,
+                "d_conv": 8,
+                "learning_rate": 1.9967928531955955e-05
+            },
+            "metrics": {
+                "accuracy": 0.9906666666666667,
+                "f1_macro": 0.8694119505731361,
+                "f1_weighted": 0.9906745159602303,
+                "val_loss": 0.024762138724327087
+            }
+        },
+        {
+            "trial": 29,
+            "params": {
+                "d_model": 182,
+                "n_layer": 2,
+                "d_state": 42,
+                "expand": 4,
+                "d_conv": 3,
+                "learning_rate": 9.010561904423347e-05
+            },
+            "metrics": {
+                "accuracy": 0.991,
+                "f1_macro": 0.858926671497702,
+                "f1_weighted": 0.9905954527432107,
+                "val_loss": 0.022858481854200363
+            }
+        }
+    ]
+}
