@@ -19,17 +19,14 @@ from sklearn.metrics import (
 )
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sklearn.utils import resample
 from torch.utils.data import DataLoader, TensorDataset
 
-# 1. 基于Mamba架构的故障预测模型
-# 2. 完整的数据处理流程
-# 3. 模型训练和评估功能
-# 4. 结果可视化和保存
-# 与原来的enhanced_fault_prediction.py相比，主要区别是：
-#
-# 1. 使用了model.py中的Mamba模型架构
-# 2. 去掉了过采样部分，直接使用原始数据进行训练
-# 3. 保留了多任务学习、焦点损失和Mixup数据增强等高级功能
+# - 增加过采样 ：对少数类进行过采样，使每种故障类型的样本数达到无故障样本的10%，同时至少是原来的3倍
+# - 调整类别权重 ：增加无故障类别的权重，使模型更关注无故障样本
+# - 修改模型结构 ：增强特征嵌入层，使模型能更好地学习特征表示
+# - 调整超参数 ：降低学习率，增加权重衰减，调整焦点损失参数
+# - 添加训练进度跟踪 ：更好地监控训练过程
 
 # 导入Mamba模型
 from model import ModelArgs, Mamba, ResidualBlock, MambaBlock, RMSNorm
@@ -88,8 +85,21 @@ class MambaFaultConfig:
     d_state: int = 16  # 状态空间维度
     expand: int = 2  # 扩展因子
     dropout: float = 0.2  # dropout率
-    learning_rate: float = 1e-3  # 学习率
-    weight_decay: float = 1e-4  # 权重衰减
+
+    # 修改学习率和权重衰减
+    learning_rate: float = 5e-4  # 降低学习率
+    weight_decay: float = 1e-3  # 增加权重衰减
+    
+    # 修改多任务学习权重
+    multi_task_weight: float = 0.5  # 多分类任务权重
+    binary_task_weight: float = 0.5  # 二分类任务权重
+    
+    # 修改焦点损失参数
+    focal_gamma: float = 2.0  # 调整焦点损失gamma参数
+    focal_alpha: float = 0.5  # 调整焦点损失alpha参数
+    
+    # 增加过采样参数
+    use_oversampling: bool = True  # 使用过采样
     
     # 类别权重
     use_class_weights: bool = True
@@ -156,7 +166,6 @@ class MambaFaultConfig:
 
 class MambaFaultPredictionModel(nn.Module):
     """基于Mamba的故障预测模型"""
-    
     def __init__(self, config: MambaFaultConfig, input_dim: int, num_classes: int):
         super().__init__()
         self.config = config
@@ -165,18 +174,24 @@ class MambaFaultPredictionModel(nn.Module):
         mamba_args = ModelArgs(
             d_model=config.d_model,
             n_layer=config.n_layer,
-            vocab_size=num_classes,  # 这里不是真正用于词汇表，只是为了初始化
+            vocab_size=num_classes,
             d_state=config.d_state,
             expand=config.expand
         )
         
-        # 特征嵌入层
+        # 特征嵌入层 - 增加一个额外的线性层
         self.embedding = nn.Sequential(
-            nn.Linear(input_dim, config.d_model),
+            nn.Linear(input_dim, config.d_model * 2),
+            nn.LayerNorm(config.d_model * 2),
+            nn.GELU(),
+            nn.Dropout(config.dropout),
+            nn.Linear(config.d_model * 2, config.d_model),
             nn.LayerNorm(config.d_model),
             nn.GELU(),
             nn.Dropout(config.dropout)
         )
+    
+
         
         # Mamba层
         self.layers = nn.ModuleList([ResidualBlock(mamba_args) for _ in range(config.n_layer)])
@@ -255,6 +270,8 @@ class MambaDataProcessor:
         self.label_encoder = LabelEncoder()  # 用于编码产品类型
         self.fault_mapping = None  # 故障类型映射
         self.class_weights = None  # 类别权重
+
+
 
     def load_and_preprocess(self) -> Tuple[DataLoader, DataLoader, torch.Tensor, np.ndarray, Dict[str, Any]]:
         # 加载数据
@@ -337,10 +354,15 @@ class MambaDataProcessor:
         X = df_processed.drop(columns=['Fault_Type'])
         y = df['Fault_Type']
         
-        # 计算类别权重
+        # 计算类别权重 - 修改权重计算方式
         class_counts = np.bincount(y)
         total_samples = len(y)
+        # 使用更合理的权重计算方式
         class_weights = total_samples / (len(class_counts) * class_counts)
+        
+        # 对无故障类别进行特殊处理，增加其权重
+        # 无故障类别索引为0
+        class_weights[0] = class_weights[0] * 5.0  # 增加无故障类别的权重
         
         # 对TWF和RNF类别增加额外权重
         twf_idx = list(self.fault_mapping.values()).index('TWF')
@@ -350,11 +372,51 @@ class MambaDataProcessor:
         
         self.class_weights = torch.FloatTensor(class_weights).to(self.config.device)
         logging.info(f"类别权重: {class_weights}")
+
         
         # 数据集划分
         X_train, X_test, y_train, y_test = train_test_split(
             X, y, test_size=0.3, random_state=42, stratify=y
         )
+        
+        # 对训练数据进行过采样
+        if self.config.use_oversampling:
+            X_train_resampled = []
+            y_train_resampled = []
+            
+            # 获取无故障样本数量
+            normal_samples = sum(y_train == 0)
+            
+            # 保留所有无故障样本
+            X_train_normal = X_train[y_train == 0]
+            y_train_normal = y_train[y_train == 0]
+            X_train_resampled.append(X_train_normal)
+            y_train_resampled.append(y_train_normal)
+            
+            # 对每种故障类型进行过采样
+            for fault_idx in range(1, len(self.fault_mapping)):
+                X_fault = X_train[y_train == fault_idx]
+                y_fault = y_train[y_train == fault_idx]
+                
+                # 计算过采样数量，使每种故障类型的样本数为无故障样本的10%
+                n_samples = max(int(normal_samples * 0.1), len(X_fault) * 3)
+                
+                # 过采样
+                if len(X_fault) > 0:  # 确保有样本可以过采样
+                    X_fault_resampled, y_fault_resampled = resample(
+                        X_fault, y_fault, 
+                        replace=True, 
+                        n_samples=n_samples, 
+                        random_state=42
+                    )
+                    X_train_resampled.append(X_fault_resampled)
+                    y_train_resampled.append(y_fault_resampled)
+            
+            # 合并所有样本
+            X_train = pd.concat(X_train_resampled)
+            y_train = pd.concat(y_train_resampled)
+            
+            logging.info(f"过采样后的训练集分布:\n{pd.Series(y_train).value_counts().sort_index()}")
         
         # 标准化
         X_train_scaled = self.scaler.fit_transform(X_train)
@@ -507,8 +569,16 @@ class MambaModelTrainer:
             self.model.train()
             epoch_loss = 0.0
             
+            # 添加进度跟踪
+            batch_count = len(train_loader)
+            
             for batch_idx, (data, target, target_binary, target_twf, target_rnf) in enumerate(train_loader):
+                # 每10个批次打印一次进度
+                if batch_idx % 10 == 0:
+                    logging.info(f"轮次 {epoch+1}/{self.config.num_epochs}, 批次 {batch_idx}/{batch_count}")
+                
                 self.optimizer.zero_grad()
+
                 
                 # 应用Mixup数据增强
                 if self.config.use_mixup and np.random.random() < 0.5:  # 50%的概率使用Mixup

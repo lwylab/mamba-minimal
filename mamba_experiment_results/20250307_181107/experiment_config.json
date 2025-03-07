@@ -1,0 +1,43 @@
+{
+    "data_path": "./ai4i2020.csv",
+    "model_save_path": "mamba_experiment_results\\20250307_181107\\best_mamba_model.pth",
+    "base_output_dir": "mamba_experiment_results",
+    "experiment_data_path": "mamba_evaluation_results.json",
+    "batch_size": 32,
+    "num_epochs": 300,
+    "early_stopping_patience": 50,
+    "d_model": 128,
+    "n_layer": 4,
+    "d_state": 16,
+    "expand": 2,
+    "dropout": 0.2,
+    "learning_rate": 0.0005,
+    "weight_decay": 0.001,
+    "multi_task_weight": 0.7,
+    "binary_task_weight": 0.3,
+    "focal_gamma": 2.5,
+    "focal_alpha": 0.25,
+    "use_oversampling": true,
+    "use_class_weights": true,
+    "twf_weight_multiplier": 10.0,
+    "rnf_weight_multiplier": 20.0,
+    "use_multitask": true,
+    "use_focal_loss": true,
+    "use_advanced_features": true,
+    "use_mixup": true,
+    "mixup_alpha": 0.2,
+    "device": "cpu",
+    "columns_to_drop": [
+        "UDI",
+        "Product ID"
+    ],
+    "output_dir": "mamba_experiment_results\\20250307_181107",
+    "fault_types": [
+        "HDF",
+        "PWF",
+        "OSF",
+        "TWF",
+        "RNF"
+    ],
+    "num_classes": 6
+}
