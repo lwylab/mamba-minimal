@@ -371,8 +371,8 @@ class DataProcessor:
         # 过采样少数类
         oversampled_data = class_data[majority_class]
         for i in range(1, len(class_counts)):
-            # 计算需要过采样的数量
-            n_samples = max(int(majority_count * 0.8), class_counts[i])
+            # 修改过采样比例为原样本的2倍
+            n_samples = min(class_counts[i] * 2, majority_count)
             
             # 过采样
             if n_samples > class_counts[i]:

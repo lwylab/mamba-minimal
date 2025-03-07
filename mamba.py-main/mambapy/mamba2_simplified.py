@@ -57,7 +57,8 @@ class SimplifiedSSM(nn.Module):
         super().__init__()
         # 参数矩阵
         self.A = nn.Parameter(torch.randn(d_state, d_state) * 0.01)
-        self.B = nn.Parameter(torch.randn(d_state, d_model) * 0.01)
+        # 修改 B 矩阵的维度，从 (d_state, d_model) 改为 (d_model, d_state)
+        self.B = nn.Parameter(torch.randn(d_model, d_state) * 0.01)
         self.C = nn.Parameter(torch.randn(d_model, d_state) * 0.01)
         self.D = nn.Parameter(torch.randn(d_model) * 0.01)
         
@@ -74,7 +75,10 @@ class SimplifiedSSM(nn.Module):
         
         # 序列扫描
         for t in range(seq_len):
-            # 更新状态
+            # 修改矩阵乘法，确保维度匹配
+            # x[:, t] 形状为 [batch_size, d_model]
+            # self.B 形状为 [d_model, d_state]
+            # 乘积形状为 [batch_size, d_state]
             h = torch.tanh(h @ self.A + x[:, t] @ self.B)
             # 计算输出
             y = h @ self.C.t() + self.D
@@ -83,7 +87,6 @@ class SimplifiedSSM(nn.Module):
         # 堆叠输出
         output = torch.stack(outputs, dim=1)
         return self.dropout(output)
-
 
 class Mamba2Config:
     """Mamba2模型配置"""
