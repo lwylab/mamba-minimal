@@ -1,0 +1,103 @@
+{
+    "config": {
+        "data_path": "./ai4i2020.csv",
+        "model_save_path": "mamba_experiment_results\\20250307_232506\\best_mamba_model.pth",
+        "base_output_dir": "mamba_experiment_results",
+        "experiment_data_path": "mamba_evaluation_results.json",
+        "batch_size": 32,
+        "num_epochs": 300,
+        "early_stopping_patience": 50,
+        "d_model": 128,
+        "n_layer": 4,
+        "d_state": 16,
+        "expand": 2,
+        "dropout": 0.2,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.002,
+        "use_class_weights": true,
+        "use_multitask": true,
+        "multi_task_weight": 0.7,
+        "binary_task_weight": 0.3,
+        "use_focal_loss": true,
+        "focal_gamma": 3.0,
+        "focal_alpha": 0.3,
+        "use_precision_penalty": true,
+        "precision_penalty": 0.5,
+        "use_advanced_features": true,
+        "use_mixup": true,
+        "mixup_alpha": 0.2,
+        "use_oversampling": true,
+        "oversampling_ratio": 0.15,
+        "min_oversampling_factor": 4,
+        "prediction_threshold": 0.6,
+        "device": "cpu",
+        "columns_to_drop": [
+            "UDI",
+            "Product ID",
+            "TWF",
+            "RNF"
+        ],
+        "output_dir": "mamba_experiment_results\\20250307_232506",
+        "fault_types": [
+            "HDF",
+            "PWF",
+            "OSF"
+        ],
+        "num_classes": 6
+    },
+    "feature_info": {
+        "input_dim": 19,
+        "num_classes": 4
+    },
+    "evaluation": {
+        "accuracy": 0.9786666666666667,
+        "precision": 0.9867524220542349,
+        "recall": 0.9786666666666667,
+        "f1": 0.981251999984555,
+        "classification_report": {
+            "0": {
+                "precision": 0.9989499474973749,
+                "recall": 0.9794097460535347,
+                "f1-score": 0.9890833477733495,
+                "support": 2914.0
+            },
+            "1": {
+                "precision": 0.5961538461538461,
+                "recall": 0.96875,
+                "f1-score": 0.7380952380952381,
+                "support": 32.0
+            },
+            "2": {
+                "precision": 0.55,
+                "recall": 0.88,
+                "f1-score": 0.676923076923077,
+                "support": 25.0
+            },
+            "3": {
+                "precision": 0.5686274509803921,
+                "recall": 1.0,
+                "f1-score": 0.725,
+                "support": 29.0
+            },
+            "accuracy": 0.9786666666666667,
+            "macro avg": {
+                "precision": 0.6784328111579032,
+                "recall": 0.9570399365133837,
+                "f1-score": 0.7822754156979163,
+                "support": 3000.0
+            },
+            "weighted avg": {
+                "precision": 0.9867524220542349,
+                "recall": 0.9786666666666667,
+                "f1-score": 0.981251999984555,
+                "support": 3000.0
+            }
+        }
+    },
+    "fault_mapping": {
+        "0": "\u65e0\u6545\u969c",
+        "1": "HDF",
+        "2": "PWF",
+        "3": "OSF"
+    }
+}
