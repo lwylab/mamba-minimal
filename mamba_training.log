@@ -10057,3 +10057,115 @@ weighted avg       0.98      0.96      0.97      3000
 2025-03-07 22:12:10,352 - INFO - 最终F1分数(加权平均): 0.9667
 2025-03-07 22:12:10,352 - INFO - 二分类F1分数: 0.8272
 2025-03-07 22:12:10,353 - INFO - 实验配置已保存到 mamba_experiment_results\20250307_215654\experiment_config.json
+2025-03-07 23:21:45,702 - INFO - 使用 CPU
+2025-03-07 23:21:45,722 - INFO - 数据加载成功！
+2025-03-07 23:21:45,722 - INFO - 数据集形状: (10000, 14)
+2025-03-07 23:21:45,723 - INFO - 数据集列: ['UDI', 'Product ID', 'Type', 'Air temperature [K]', 'Process temperature [K]', 'Rotational speed [rpm]', 'Torque [Nm]', 'Tool wear [min]', 'Machine failure', 'TWF', 'HDF', 'PWF', 'OSF', 'RNF']
+2025-03-07 23:21:45,730 - INFO - 添加高级工程特征完成
+2025-03-07 23:21:45,732 - INFO - 产品类型编码映射: {'H': 0, 'L': 1, 'M': 2}
+2025-03-07 23:21:45,735 - INFO - 故障类型映射: {0: '无故障', 1: 'HDF', 2: 'PWF', 3: 'OSF'}
+2025-03-07 23:21:45,738 - INFO - 故障类型分布:
+Fault_Type
+0    9713
+1     106
+2      83
+3      98
+Name: count, dtype: int64
+2025-03-07 23:21:45,756 - INFO - 类别权重: [ 0.51477401 70.75471698 90.36144578 76.53061224]
+2025-03-07 23:21:45,767 - INFO - 过采样后的训练集分布:
+0    6799
+1    1019
+2    1019
+3    1019
+Name: count, dtype: int64
+2025-03-07 23:25:06,386 - INFO - 使用 CPU
+2025-03-07 23:25:06,400 - INFO - 数据加载成功！
+2025-03-07 23:25:06,400 - INFO - 数据集形状: (10000, 14)
+2025-03-07 23:25:06,400 - INFO - 数据集列: ['UDI', 'Product ID', 'Type', 'Air temperature [K]', 'Process temperature [K]', 'Rotational speed [rpm]', 'Torque [Nm]', 'Tool wear [min]', 'Machine failure', 'TWF', 'HDF', 'PWF', 'OSF', 'RNF']
+2025-03-07 23:25:06,404 - INFO - 添加高级工程特征完成
+2025-03-07 23:25:06,407 - INFO - 产品类型编码映射: {'H': 0, 'L': 1, 'M': 2}
+2025-03-07 23:25:06,409 - INFO - 故障类型映射: {0: '无故障', 1: 'HDF', 2: 'PWF', 3: 'OSF'}
+2025-03-07 23:25:06,410 - INFO - 故障类型分布:
+Fault_Type
+0    9713
+1     106
+2      83
+3      98
+Name: count, dtype: int64
+2025-03-07 23:25:06,420 - INFO - 类别权重: [ 0.51477401 70.75471698 90.36144578 76.53061224]
+2025-03-07 23:25:06,429 - INFO - 过采样后的训练集分布:
+0    6799
+1    1019
+2    1019
+3    1019
+Name: count, dtype: int64
+2025-03-07 23:25:07,947 - INFO - 模型结构:
+MambaFaultPredictionModel(
+  (embedding): Sequential(
+    (0): Linear(in_features=19, out_features=256, bias=True)
+    (1): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+    (2): GELU(approximate='none')
+    (3): Dropout(p=0.2, inplace=False)
+    (4): Linear(in_features=256, out_features=256, bias=True)
+    (5): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+    (6): GELU(approximate='none')
+    (7): Dropout(p=0.2, inplace=False)
+    (8): Linear(in_features=256, out_features=128, bias=True)
+    (9): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    (10): GELU(approximate='none')
+    (11): Dropout(p=0.2, inplace=False)
+  )
+  (layers): ModuleList(
+    (0-3): 4 x ResidualBlock(
+      (mixer): MambaBlock(
+        (in_proj): Linear(in_features=128, out_features=512, bias=False)
+        (conv1d): Conv1d(256, 256, kernel_size=(4,), stride=(1,), padding=(3,), groups=256)
+        (x_proj): Linear(in_features=256, out_features=40, bias=False)
+        (dt_proj): Linear(in_features=8, out_features=256, bias=True)
+        (out_proj): Linear(in_features=256, out_features=128, bias=False)
+      )
+      (norm): RMSNorm()
+    )
+  )
+  (norm_f): RMSNorm()
+  (classifier): Sequential(
+    (0): Linear(in_features=128, out_features=128, bias=True)
+    (1): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+    (2): GELU(approximate='none')
+    (3): Dropout(p=0.2, inplace=False)
+    (4): Linear(in_features=128, out_features=4, bias=True)
+  )
+  (binary_classifier): Sequential(
+    (0): Linear(in_features=128, out_features=64, bias=True)
+    (1): LayerNorm((64,), eps=1e-05, elementwise_affine=True)
+    (2): GELU(approximate='none')
+    (3): Dropout(p=0.2, inplace=False)
+    (4): Linear(in_features=64, out_features=2, bias=True)
+  )
+)
+2025-03-07 23:25:07,949 - INFO - 模型训练器初始化完成
+2025-03-07 23:25:07,949 - INFO - 开始训练，总轮次: 300
+2025-03-07 23:25:07,958 - INFO - 轮次 1/300, 批次 0/308
+2025-03-07 23:25:08,489 - INFO - 轮次 1/300, 批次 10/308
+2025-03-07 23:25:08,872 - INFO - 轮次 1/300, 批次 20/308
+2025-03-07 23:25:09,252 - INFO - 轮次 1/300, 批次 30/308
+2025-03-07 23:25:09,657 - INFO - 轮次 1/300, 批次 40/308
+2025-03-07 23:25:10,065 - INFO - 轮次 1/300, 批次 50/308
+2025-03-07 23:25:10,518 - INFO - 轮次 1/300, 批次 60/308
+2025-03-07 23:25:10,966 - INFO - 轮次 1/300, 批次 70/308
+2025-03-07 23:25:11,444 - INFO - 轮次 1/300, 批次 80/308
+2025-03-07 23:25:11,861 - INFO - 轮次 1/300, 批次 90/308
+2025-03-07 23:25:12,266 - INFO - 轮次 1/300, 批次 100/308
+2025-03-07 23:25:12,673 - INFO - 轮次 1/300, 批次 110/308
+2025-03-07 23:25:13,050 - INFO - 轮次 1/300, 批次 120/308
+2025-03-07 23:25:13,449 - INFO - 轮次 1/300, 批次 130/308
+2025-03-07 23:25:13,928 - INFO - 轮次 1/300, 批次 140/308
+2025-03-07 23:25:14,438 - INFO - 轮次 1/300, 批次 150/308
+2025-03-07 23:25:14,862 - INFO - 轮次 1/300, 批次 160/308
+2025-03-07 23:25:15,310 - INFO - 轮次 1/300, 批次 170/308
+2025-03-07 23:25:15,768 - INFO - 轮次 1/300, 批次 180/308
+2025-03-07 23:25:16,201 - INFO - 轮次 1/300, 批次 190/308
+2025-03-07 23:25:16,663 - INFO - 轮次 1/300, 批次 200/308
+2025-03-07 23:25:17,101 - INFO - 轮次 1/300, 批次 210/308
+2025-03-07 23:25:17,578 - INFO - 轮次 1/300, 批次 220/308
+2025-03-07 23:25:18,073 - INFO - 轮次 1/300, 批次 230/308
