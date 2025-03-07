@@ -1,0 +1,57 @@
+2025-03-08 00:15:50,157 - INFO - 使用设备: cpu
+2025-03-08 00:15:50,158 - INFO - 输出目录: mamba2_results_20250308_001550
+2025-03-08 00:15:50,158 - INFO - 加载数据: ./ai4i2020.csv
+2025-03-08 00:16:29,287 - INFO - 使用设备: cpu
+2025-03-08 00:16:29,287 - INFO - 输出目录: mamba2_results_20250308_001629
+2025-03-08 00:16:29,287 - INFO - 加载数据: .../ai4i2020.csv
+2025-03-08 00:16:49,747 - INFO - 使用设备: cpu
+2025-03-08 00:16:49,748 - INFO - 输出目录: mamba2_results_20250308_001649
+2025-03-08 00:16:49,748 - INFO - 加载数据: ..../ai4i2020.csv
+2025-03-08 00:17:13,349 - INFO - 使用设备: cpu
+2025-03-08 00:17:13,350 - INFO - 输出目录: mamba2_results_20250308_001713
+2025-03-08 00:17:13,350 - INFO - 加载数据: C:\Users\L\PycharmProjects\20250227\mamba-minimal\ai4i2020.csv
+2025-03-08 00:17:13,372 - INFO - 数据集形状: (10000, 14)
+2025-03-08 00:17:13,372 - INFO - 数据集列: ['UDI', 'Product ID', 'Type', 'Air temperature [K]', 'Process temperature [K]', 'Rotational speed [rpm]', 'Torque [Nm]', 'Tool wear [min]', 'Machine failure', 'TWF', 'HDF', 'PWF', 'OSF', 'RNF']
+2025-03-08 00:17:13,385 - INFO - 特征工程完成
+2025-03-08 00:17:13,388 - INFO - 故障类型映射: {0: '无故障', 1: 'HDF', 2: 'PWF', 3: 'OSF', 4: 'TWF', 5: 'RNF'}
+2025-03-08 00:17:13,389 - INFO - 故障类型分布:
+Fault_Type
+0    9652
+1     106
+2      83
+3      95
+4      45
+5      19
+Name: count, dtype: int64
+2025-03-08 00:17:13,396 - INFO - 特征数量: 16
+2025-03-08 00:17:13,396 - INFO - 特征列表: ['Air temperature [K]', 'Process temperature [K]', 'Rotational speed [rpm]', 'Torque [Nm]', 'Tool wear [min]', 'Type_encoded', 'Temp_diff', 'Torque_Rotational_ratio', 'Power', 'Tool_wear_rate', 'Temp_Tool_interaction', 'Rotation_Tool_interaction', 'Torque_Tool_interaction', 'Rotational_speed_squared', 'Tool_wear_squared', 'Torque_squared']
+2025-03-08 00:17:13,446 - INFO - 类别权重: tensor([ 0.2590, 15.6863, 20.2020, 17.5439, 37.0370, 88.8889])
+2025-03-08 00:17:13,446 - INFO - 执行过采样...
+2025-03-08 00:17:13,461 - INFO - 过采样后的样本分布: [7722 6177 6177 6177 6177 6177]
+2025-03-08 00:17:15,812 - INFO - 模型结构:
+Mamba2SequenceModel(
+  (input_proj): Linear(in_features=16, out_features=128, bias=True)
+  (mamba2): Mamba2(
+    (layers): ModuleList(
+      (0-3): 4 x Mamba2Block(
+        (norm1): RMSNorm()
+        (norm2): RMSNorm()
+        (ssm): SimplifiedSSM(
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (ff): FeedForward(
+          (net): Sequential(
+            (0): Linear(in_features=128, out_features=256, bias=True)
+            (1): SiLU()
+            (2): Dropout(p=0.1, inplace=False)
+            (3): Linear(in_features=256, out_features=128, bias=True)
+            (4): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+  )
+  (norm_f): RMSNorm()
+  (classifier): Linear(in_features=128, out_features=6, bias=True)
+)
+2025-03-08 00:17:15,813 - INFO - 开始训练模型...
