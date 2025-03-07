@@ -302,7 +302,7 @@ class DataProcessor:
     def _create_fault_labels(self, df):
         """创建故障类型标签"""
         # 故障类型
-        fault_types = ['HDF', 'PWF', 'OSF', 'TWF', 'RNF']
+        fault_types = ['HDF', 'PWF', 'OSF']
         
         # 创建故障类型标签
         df['Fault_Type'] = 0  # 默认为无故障
@@ -436,10 +436,11 @@ class ModelTrainer:
             weight_decay=self.config.weight_decay
         )
         
-        # 设置学习率调度器
+        # 设置学习率调度器 - 移除verbose参数
         scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-            optimizer, mode='max', factor=0.5, patience=10, verbose=True
+            optimizer, mode='max', factor=0.5, patience=10
         )
+        
         
         # 设置损失函数
         if self.config.use_focal_loss:
@@ -505,7 +506,13 @@ class ModelTrainer:
                 val_recall = recall_score(y_test, y_pred, average='weighted')
             
             # 更新学习率
+            prev_lr = optimizer.param_groups[0]['lr']
             scheduler.step(val_f1)
+            current_lr = optimizer.param_groups[0]['lr']
+            
+            # 如果学习率发生变化，手动记录日志
+            if prev_lr != current_lr:
+                logging.info(f"学习率从 {prev_lr} 调整为 {current_lr}")
             
             # 打印训练信息
             logging.info(
@@ -516,6 +523,7 @@ class ModelTrainer:
                 f"Precision: {val_precision:.4f}, "
                 f"Recall: {val_recall:.4f}"
             )
+            
             
             # 检查是否是最佳模型
             if val_f1 > self.best_val_f1:
