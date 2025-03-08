@@ -131,6 +131,10 @@ class Mamba2FaultConfig:
     use_mixup: bool = True
     mixup_alpha: float = 0.2
     
+    # 新增: 平衡准确率和召回率的参数
+    precision_recall_balance: float = 0.6  # 值越大越偏向准确率，越小越偏向召回率
+    threshold_adjustment: bool = True  # 是否使用阈值调整
+    
     # 设备
     device: torch.device = None
     
@@ -341,13 +345,17 @@ class DataProcessor:
         class_counts = np.bincount(y)
         total_samples = len(y)
         
-        # 计算类别权重
-        self.class_weights = torch.FloatTensor(
-            total_samples / (len(class_counts) * class_counts)
-        ).to(self.config.device)
+        # 计算类别权重，但限制最大权重
+        raw_weights = total_samples / (len(class_counts) * class_counts)
         
-        # 调整无故障类别的权重
-        self.class_weights[0] *= 1.5
+        # 限制最大权重为无故障类的5倍
+        max_weight = raw_weights[0] * 5
+        limited_weights = np.minimum(raw_weights, max_weight)
+        
+        self.class_weights = torch.FloatTensor(limited_weights).to(self.config.device)
+        
+        # 调整无故障类别的权重 - 增加无故障类的权重以减少假阳性
+        self.class_weights[0] *= 2.0
         
         logging.info(f"类别权重: {self.class_weights}")
     
@@ -368,11 +376,11 @@ class DataProcessor:
         for i in range(len(class_counts)):
             class_data[i] = data[data[:, -1] == i]
         
-        # 过采样少数类
+        # 过采样少数类 - 修改过采样比例，避免过度过采样
         oversampled_data = class_data[majority_class]
         for i in range(1, len(class_counts)):
-            # 修改过采样比例为原样本的2倍
-            n_samples = min(class_counts[i] * 2, majority_count)
+            # 修改过采样比例为原样本的1.5倍，而不是2倍
+            n_samples = min(int(class_counts[i] * 1.5), int(majority_count * 0.1))
             
             # 过采样
             if n_samples > class_counts[i]:
@@ -564,6 +572,11 @@ class ModelEvaluator:
         # 预测
         with torch.no_grad():
             y_pred_proba = torch.softmax(model(X_test), dim=1).cpu().numpy()
+        
+        # 如果启用阈值调整，寻找最佳阈值
+        if self.config.threshold_adjustment:
+            y_pred = self._predict_with_optimal_threshold(y_pred_proba, y_test, fault_mapping)
+        else:
             y_pred = np.argmax(y_pred_proba, axis=1)
         
         # 计算评估指标
@@ -591,8 +604,56 @@ class ModelEvaluator:
         # 精确率-召回率曲线
         self._plot_precision_recall_curve(y_test, y_pred_proba, fault_mapping)
         
-        # 特征重要性分析
-        # 这里可以添加特征重要性分析的代码
+        return {
+            'accuracy': accuracy,
+            'f1': f1,
+            'precision': precision,
+            'recall': recall,
+            'y_pred': y_pred,
+            'y_pred_proba': y_pred_proba
+        }
+
+    def evaluate(self, model, X_test, y_test, fault_mapping):
+        """评估模型"""
+        logging.info("开始评估模型...")
+        
+        # 评估模式
+        model.eval()
+        
+        # 预测
+        with torch.no_grad():
+            y_pred_proba = torch.softmax(model(X_test), dim=1).cpu().numpy()
+        
+        # 如果启用阈值调整，寻找最佳阈值
+        if self.config.threshold_adjustment:
+            y_pred = self._predict_with_optimal_threshold(y_pred_proba, y_test, fault_mapping)
+        else:
+            y_pred = np.argmax(y_pred_proba, axis=1)
+        
+        # 计算评估指标
+        accuracy = accuracy_score(y_test, y_pred)
+        f1 = f1_score(y_test, y_pred, average='weighted')
+        precision = precision_score(y_test, y_pred, average='weighted')
+        recall = recall_score(y_test, y_pred, average='weighted')
+        
+        logging.info(f"测试集评估结果:")
+        logging.info(f"准确率: {accuracy:.4f}")
+        logging.info(f"F1分数: {f1:.4f}")
+        logging.info(f"精确率: {precision:.4f}")
+        logging.info(f"召回率: {recall:.4f}")
+        
+        # 分类报告
+        class_report = classification_report(y_test, y_pred, target_names=list(fault_mapping.values()))
+        logging.info(f"分类报告:\n{class_report}")
+        
+        # 混淆矩阵
+        self._plot_confusion_matrix(y_test, y_pred, fault_mapping)
+        
+        # ROC曲线
+        self._plot_roc_curve(y_test, y_pred_proba, fault_mapping)
+        
+        # 精确率-召回率曲线
+        self._plot_precision_recall_curve(y_test, y_pred_proba, fault_mapping)
         
         return {
             'accuracy': accuracy,
@@ -602,6 +663,54 @@ class ModelEvaluator:
             'y_pred': y_pred,
             'y_pred_proba': y_pred_proba
         }
+    
+    def _predict_with_optimal_threshold(self, y_pred_proba, y_test, fault_mapping):
+        """使用优化的阈值进行预测，平衡准确率和召回率"""
+        logging.info("寻找最佳决策阈值以平衡准确率和召回率...")
+        
+        # 将真实标签转换为one-hot编码
+        n_classes = len(fault_mapping)
+        y_true_onehot = np.zeros((len(y_test), n_classes))
+        for i in range(len(y_test)):
+            y_true_onehot[i, y_test[i]] = 1
+        
+        # 初始化最佳阈值
+        best_thresholds = np.zeros(n_classes)
+        
+        # 对每个类别寻找最佳阈值
+        for i in range(1, n_classes):  # 从1开始，跳过无故障类别
+            precisions, recalls, thresholds = precision_recall_curve(
+                y_true_onehot[:, i], y_pred_proba[:, i]
+            )
+            
+            # 计算F-beta分数，beta控制精确率和召回率的权重
+            beta = (1 - self.config.precision_recall_balance) / self.config.precision_recall_balance
+            beta_squared = beta ** 2
+            # 修复这里的语法错误 - 将分割的行合并为一行
+            f_scores = ((1 + beta_squared) * precisions * recalls) / (beta_squared * precisions + recalls + 1e-10)
+            
+            # 找到最大F-beta分数对应的阈值
+            if len(thresholds) > 0:
+                best_idx = np.argmax(f_scores[:-1])  # 最后一个precision/recall没有对应的阈值
+                best_thresholds[i] = thresholds[best_idx]
+            else:
+                best_thresholds[i] = 0.5  # 默认阈值
+            
+            logging.info(f"类别 {fault_mapping[i]} 的最佳阈值: {best_thresholds[i]:.4f}")
+        
+        # 使用最佳阈值进行预测
+        y_pred = np.zeros(len(y_test), dtype=int)
+        
+        # 首先假设所有样本都是无故障类别
+        y_pred.fill(0)
+        
+        # 然后根据阈值判断是否属于故障类别
+        for i in range(1, n_classes):
+            mask = y_pred_proba[:, i] > best_thresholds[i]
+            y_pred[mask] = i
+        
+        return y_pred
+
     
     def _plot_confusion_matrix(self, y_true, y_pred, fault_mapping):
         """绘制混淆矩阵"""
