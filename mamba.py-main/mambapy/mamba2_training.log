@@ -569,3 +569,165 @@ Mamba2SequenceModel(
 2025-03-08 01:15:05,966 - INFO - F1未提升，早停计数器: 20/20
 2025-03-08 01:15:05,966 - INFO - 早停触发，停止训练
 2025-03-08 01:15:05,967 - INFO - 开始评估模型...
+2025-03-08 18:49:35,425 - INFO - 使用设备: cpu
+2025-03-08 18:49:35,426 - INFO - 输出目录: mamba2_results_20250308_184935
+2025-03-08 18:49:35,426 - INFO - 加载数据: C:\Users\L\PycharmProjects\20250227\mamba-minimal\ai4i2020.csv
+2025-03-08 18:49:35,445 - INFO - 数据集形状: (10000, 14)
+2025-03-08 18:49:35,445 - INFO - 数据集列: ['UDI', 'Product ID', 'Type', 'Air temperature [K]', 'Process temperature [K]', 'Rotational speed [rpm]', 'Torque [Nm]', 'Tool wear [min]', 'Machine failure', 'TWF', 'HDF', 'PWF', 'OSF', 'RNF']
+2025-03-08 18:49:35,453 - INFO - 特征工程完成
+2025-03-08 18:49:35,454 - INFO - 故障类型映射: {0: '无故障', 1: 'HDF', 2: 'PWF', 3: 'OSF'}
+2025-03-08 18:49:35,458 - INFO - 故障类型分布:
+Fault_Type
+0    9713
+1     106
+2      83
+3      98
+Name: count, dtype: int64
+2025-03-08 18:49:35,463 - INFO - 特征数量: 16
+2025-03-08 18:49:35,463 - INFO - 特征列表: ['Air temperature [K]', 'Process temperature [K]', 'Rotational speed [rpm]', 'Torque [Nm]', 'Tool wear [min]', 'Type_encoded', 'Temp_diff', 'Torque_Rotational_ratio', 'Power', 'Tool_wear_rate', 'Temp_Tool_interaction', 'Rotation_Tool_interaction', 'Torque_Tool_interaction', 'Rotational_speed_squared', 'Tool_wear_squared', 'Torque_squared']
+2025-03-08 18:49:35,508 - INFO - 类别权重: tensor([0.5147, 1.2868, 1.2868, 1.2868])
+2025-03-08 18:49:35,508 - INFO - 执行过采样...
+2025-03-08 18:49:35,513 - INFO - 过采样后的样本分布: [7771  127   99  117]
+2025-03-08 18:49:35,977 - INFO - 模型结构:
+Mamba2SequenceModel(
+  (input_proj): Linear(in_features=16, out_features=128, bias=True)
+  (mamba2): Mamba2(
+    (layers): ModuleList(
+      (0-3): 4 x Mamba2Block(
+        (norm1): RMSNorm()
+        (norm2): RMSNorm()
+        (ssm): SimplifiedSSM(
+          (dropout): Dropout(p=0.1, inplace=False)
+        )
+        (ff): FeedForward(
+          (net): Sequential(
+            (0): Linear(in_features=128, out_features=256, bias=True)
+            (1): SiLU()
+            (2): Dropout(p=0.1, inplace=False)
+            (3): Linear(in_features=256, out_features=128, bias=True)
+            (4): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+  )
+  (norm_f): RMSNorm()
+  (classifier): Linear(in_features=128, out_features=4, bias=True)
+)
+2025-03-08 18:49:35,978 - INFO - 开始训练模型...
+2025-03-08 18:49:46,488 - INFO - Epoch 1/200 - Loss: 0.0132, Accuracy: 0.9205, F1: 0.9417, Precision: 0.9748, Recall: 0.9205
+2025-03-08 18:49:46,495 - INFO - 保存最佳模型，F1: 0.9417
+2025-03-08 18:49:54,335 - INFO - Epoch 2/200 - Loss: 0.0081, Accuracy: 0.9605, F1: 0.9678, Precision: 0.9811, Recall: 0.9605
+2025-03-08 18:49:54,339 - INFO - 保存最佳模型，F1: 0.9678
+2025-03-08 18:50:02,044 - INFO - Epoch 3/200 - Loss: 0.0075, Accuracy: 0.9405, F1: 0.9558, Precision: 0.9796, Recall: 0.9405
+2025-03-08 18:50:02,044 - INFO - F1未提升，早停计数器: 1/20
+2025-03-08 18:50:10,275 - INFO - Epoch 4/200 - Loss: 0.0070, Accuracy: 0.9435, F1: 0.9567, Precision: 0.9797, Recall: 0.9435
+2025-03-08 18:50:10,275 - INFO - F1未提升，早停计数器: 2/20
+2025-03-08 18:50:18,154 - INFO - Epoch 5/200 - Loss: 0.0065, Accuracy: 0.9170, F1: 0.9403, Precision: 0.9780, Recall: 0.9170
+2025-03-08 18:50:18,154 - INFO - F1未提升，早停计数器: 3/20
+2025-03-08 18:50:26,379 - INFO - Epoch 6/200 - Loss: 0.0068, Accuracy: 0.9640, F1: 0.9704, Precision: 0.9801, Recall: 0.9640
+2025-03-08 18:50:26,385 - INFO - 保存最佳模型，F1: 0.9704
+2025-03-08 18:50:35,225 - INFO - Epoch 7/200 - Loss: 0.0061, Accuracy: 0.9470, F1: 0.9586, Precision: 0.9789, Recall: 0.9470
+2025-03-08 18:50:35,226 - INFO - F1未提升，早停计数器: 1/20
+2025-03-08 18:50:43,129 - INFO - Epoch 8/200 - Loss: 0.0066, Accuracy: 0.9675, F1: 0.9703, Precision: 0.9762, Recall: 0.9675
+2025-03-08 18:50:43,129 - INFO - F1未提升，早停计数器: 2/20
+2025-03-08 18:50:51,593 - INFO - Epoch 9/200 - Loss: 0.0066, Accuracy: 0.9460, F1: 0.9581, Precision: 0.9792, Recall: 0.9460
+2025-03-08 18:50:51,593 - INFO - F1未提升，早停计数器: 3/20
+2025-03-08 18:50:59,586 - INFO - Epoch 10/200 - Loss: 0.0059, Accuracy: 0.9590, F1: 0.9670, Precision: 0.9808, Recall: 0.9590
+2025-03-08 18:50:59,587 - INFO - F1未提升，早停计数器: 4/20
+2025-03-08 18:51:07,386 - INFO - Epoch 11/200 - Loss: 0.0058, Accuracy: 0.9545, F1: 0.9641, Precision: 0.9805, Recall: 0.9545
+2025-03-08 18:51:07,387 - INFO - F1未提升，早停计数器: 5/20
+2025-03-08 18:51:15,466 - INFO - Epoch 12/200 - Loss: 0.0061, Accuracy: 0.9680, F1: 0.9728, Precision: 0.9821, Recall: 0.9680
+2025-03-08 18:51:15,472 - INFO - 保存最佳模型，F1: 0.9728
+2025-03-08 18:51:23,335 - INFO - Epoch 13/200 - Loss: 0.0060, Accuracy: 0.9685, F1: 0.9734, Precision: 0.9822, Recall: 0.9685
+2025-03-08 18:51:23,340 - INFO - 保存最佳模型，F1: 0.9734
+2025-03-08 18:51:31,290 - INFO - Epoch 14/200 - Loss: 0.0059, Accuracy: 0.9640, F1: 0.9704, Precision: 0.9828, Recall: 0.9640
+2025-03-08 18:51:31,291 - INFO - F1未提升，早停计数器: 1/20
+2025-03-08 18:51:39,274 - INFO - Epoch 15/200 - Loss: 0.0056, Accuracy: 0.9505, F1: 0.9611, Precision: 0.9798, Recall: 0.9505
+2025-03-08 18:51:39,274 - INFO - F1未提升，早停计数器: 2/20
+2025-03-08 18:51:47,417 - INFO - Epoch 16/200 - Loss: 0.0053, Accuracy: 0.9615, F1: 0.9684, Precision: 0.9808, Recall: 0.9615
+2025-03-08 18:51:47,418 - INFO - F1未提升，早停计数器: 3/20
+2025-03-08 18:51:55,120 - INFO - Epoch 17/200 - Loss: 0.0054, Accuracy: 0.9610, F1: 0.9684, Precision: 0.9822, Recall: 0.9610
+2025-03-08 18:51:55,121 - INFO - F1未提升，早停计数器: 4/20
+2025-03-08 18:52:02,965 - INFO - Epoch 18/200 - Loss: 0.0057, Accuracy: 0.9545, F1: 0.9639, Precision: 0.9808, Recall: 0.9545
+2025-03-08 18:52:02,966 - INFO - F1未提升，早停计数器: 5/20
+2025-03-08 18:52:10,572 - INFO - Epoch 19/200 - Loss: 0.0059, Accuracy: 0.9670, F1: 0.9727, Precision: 0.9840, Recall: 0.9670
+2025-03-08 18:52:10,572 - INFO - F1未提升，早停计数器: 6/20
+2025-03-08 18:52:18,462 - INFO - Epoch 20/200 - Loss: 0.0054, Accuracy: 0.9690, F1: 0.9744, Precision: 0.9843, Recall: 0.9690
+2025-03-08 18:52:18,468 - INFO - 保存最佳模型，F1: 0.9744
+2025-03-08 18:52:26,530 - INFO - Epoch 21/200 - Loss: 0.0050, Accuracy: 0.9620, F1: 0.9694, Precision: 0.9833, Recall: 0.9620
+2025-03-08 18:52:26,530 - INFO - F1未提升，早停计数器: 1/20
+2025-03-08 18:52:34,793 - INFO - Epoch 22/200 - Loss: 0.0055, Accuracy: 0.9695, F1: 0.9742, Precision: 0.9828, Recall: 0.9695
+2025-03-08 18:52:34,793 - INFO - F1未提升，早停计数器: 2/20
+2025-03-08 18:52:42,865 - INFO - Epoch 23/200 - Loss: 0.0056, Accuracy: 0.9590, F1: 0.9672, Precision: 0.9818, Recall: 0.9590
+2025-03-08 18:52:42,865 - INFO - F1未提升，早停计数器: 3/20
+2025-03-08 18:52:51,118 - INFO - Epoch 24/200 - Loss: 0.0057, Accuracy: 0.9570, F1: 0.9660, Precision: 0.9825, Recall: 0.9570
+2025-03-08 18:52:51,118 - INFO - F1未提升，早停计数器: 4/20
+2025-03-08 18:52:59,160 - INFO - Epoch 25/200 - Loss: 0.0053, Accuracy: 0.9815, F1: 0.9814, Precision: 0.9825, Recall: 0.9815
+2025-03-08 18:52:59,167 - INFO - 保存最佳模型，F1: 0.9814
+2025-03-08 18:53:06,806 - INFO - Epoch 26/200 - Loss: 0.0054, Accuracy: 0.9480, F1: 0.9605, Precision: 0.9821, Recall: 0.9480
+2025-03-08 18:53:06,806 - INFO - F1未提升，早停计数器: 1/20
+2025-03-08 18:53:14,378 - INFO - Epoch 27/200 - Loss: 0.0046, Accuracy: 0.9755, F1: 0.9787, Precision: 0.9850, Recall: 0.9755
+2025-03-08 18:53:14,378 - INFO - F1未提升，早停计数器: 2/20
+2025-03-08 18:53:21,826 - INFO - Epoch 28/200 - Loss: 0.0052, Accuracy: 0.9650, F1: 0.9707, Precision: 0.9811, Recall: 0.9650
+2025-03-08 18:53:21,826 - INFO - F1未提升，早停计数器: 3/20
+2025-03-08 18:53:29,429 - INFO - Epoch 29/200 - Loss: 0.0051, Accuracy: 0.9655, F1: 0.9709, Precision: 0.9811, Recall: 0.9655
+2025-03-08 18:53:29,429 - INFO - F1未提升，早停计数器: 4/20
+2025-03-08 18:53:37,030 - INFO - Epoch 30/200 - Loss: 0.0060, Accuracy: 0.9640, F1: 0.9706, Precision: 0.9831, Recall: 0.9640
+2025-03-08 18:53:37,030 - INFO - F1未提升，早停计数器: 5/20
+2025-03-08 18:53:44,879 - INFO - Epoch 31/200 - Loss: 0.0053, Accuracy: 0.9560, F1: 0.9651, Precision: 0.9807, Recall: 0.9560
+2025-03-08 18:53:44,879 - INFO - F1未提升，早停计数器: 6/20
+2025-03-08 18:53:52,637 - INFO - Epoch 32/200 - Loss: 0.0045, Accuracy: 0.9715, F1: 0.9760, Precision: 0.9843, Recall: 0.9715
+2025-03-08 18:53:52,637 - INFO - F1未提升，早停计数器: 7/20
+2025-03-08 18:54:01,465 - INFO - Epoch 33/200 - Loss: 0.0047, Accuracy: 0.9625, F1: 0.9697, Precision: 0.9839, Recall: 0.9625
+2025-03-08 18:54:01,465 - INFO - F1未提升，早停计数器: 8/20
+2025-03-08 18:54:09,697 - INFO - Epoch 34/200 - Loss: 0.0042, Accuracy: 0.9710, F1: 0.9758, Precision: 0.9843, Recall: 0.9710
+2025-03-08 18:54:09,697 - INFO - F1未提升，早停计数器: 9/20
+2025-03-08 18:54:18,834 - INFO - Epoch 35/200 - Loss: 0.0052, Accuracy: 0.9695, F1: 0.9742, Precision: 0.9827, Recall: 0.9695
+2025-03-08 18:54:18,834 - INFO - F1未提升，早停计数器: 10/20
+2025-03-08 18:54:28,303 - INFO - 学习率从 0.0001 调整为 5e-05
+2025-03-08 18:54:28,303 - INFO - Epoch 36/200 - Loss: 0.0046, Accuracy: 0.9600, F1: 0.9675, Precision: 0.9817, Recall: 0.9600
+2025-03-08 18:54:28,303 - INFO - F1未提升，早停计数器: 11/20
+2025-03-08 18:54:37,356 - INFO - Epoch 37/200 - Loss: 0.0053, Accuracy: 0.9755, F1: 0.9788, Precision: 0.9851, Recall: 0.9755
+2025-03-08 18:54:37,356 - INFO - F1未提升，早停计数器: 12/20
+2025-03-08 18:54:46,508 - INFO - Epoch 38/200 - Loss: 0.0047, Accuracy: 0.9670, F1: 0.9728, Precision: 0.9841, Recall: 0.9670
+2025-03-08 18:54:46,509 - INFO - F1未提升，早停计数器: 13/20
+2025-03-08 18:54:55,565 - INFO - Epoch 39/200 - Loss: 0.0053, Accuracy: 0.9710, F1: 0.9755, Precision: 0.9840, Recall: 0.9710
+2025-03-08 18:54:55,566 - INFO - F1未提升，早停计数器: 14/20
+2025-03-08 18:55:06,211 - INFO - Epoch 40/200 - Loss: 0.0045, Accuracy: 0.9690, F1: 0.9742, Precision: 0.9846, Recall: 0.9690
+2025-03-08 18:55:06,211 - INFO - F1未提升，早停计数器: 15/20
+2025-03-08 18:55:16,794 - INFO - Epoch 41/200 - Loss: 0.0047, Accuracy: 0.9725, F1: 0.9764, Precision: 0.9843, Recall: 0.9725
+2025-03-08 18:55:16,794 - INFO - F1未提升，早停计数器: 16/20
+2025-03-08 18:55:26,082 - INFO - Epoch 42/200 - Loss: 0.0048, Accuracy: 0.9675, F1: 0.9730, Precision: 0.9835, Recall: 0.9675
+2025-03-08 18:55:26,083 - INFO - F1未提升，早停计数器: 17/20
+2025-03-08 18:55:35,227 - INFO - Epoch 43/200 - Loss: 0.0051, Accuracy: 0.9725, F1: 0.9766, Precision: 0.9847, Recall: 0.9725
+2025-03-08 18:55:35,227 - INFO - F1未提升，早停计数器: 18/20
+2025-03-08 18:55:45,898 - INFO - Epoch 44/200 - Loss: 0.0041, Accuracy: 0.9755, F1: 0.9790, Precision: 0.9868, Recall: 0.9755
+2025-03-08 18:55:45,898 - INFO - F1未提升，早停计数器: 19/20
+2025-03-08 18:55:56,523 - INFO - Epoch 45/200 - Loss: 0.0051, Accuracy: 0.9655, F1: 0.9720, Precision: 0.9847, Recall: 0.9655
+2025-03-08 18:55:56,523 - INFO - F1未提升，早停计数器: 20/20
+2025-03-08 18:55:56,523 - INFO - 早停触发，停止训练
+2025-03-08 18:55:56,526 - INFO - 开始评估模型...
+2025-03-08 18:55:56,685 - INFO - 寻找最佳决策阈值以平衡准确率和召回率...
+2025-03-08 18:55:56,693 - INFO - 类别 HDF 的最佳阈值: 0.6574
+2025-03-08 18:55:56,695 - INFO - 类别 PWF 的最佳阈值: 0.6221
+2025-03-08 18:55:56,697 - INFO - 类别 OSF 的最佳阈值: 0.8056
+2025-03-08 18:55:56,704 - INFO - 测试集评估结果:
+2025-03-08 18:55:56,705 - INFO - 准确率: 0.9845
+2025-03-08 18:55:56,705 - INFO - F1分数: 0.9843
+2025-03-08 18:55:56,705 - INFO - 精确率: 0.9850
+2025-03-08 18:55:56,705 - INFO - 召回率: 0.9845
+2025-03-08 18:55:56,714 - INFO - 分类报告:
+              precision    recall  f1-score   support
+
+         无故障       0.99      0.99      0.99      1942
+         HDF       0.65      0.81      0.72        21
+         PWF       0.75      0.71      0.73        17
+         OSF       0.92      0.60      0.73        20
+
+    accuracy                           0.98      2000
+   macro avg       0.83      0.78      0.79      2000
+weighted avg       0.98      0.98      0.98      2000
+
+2025-03-08 18:55:58,517 - INFO - 评估结果已保存到: mamba2_results_20250308_184935\evaluation_results.json
+2025-03-08 18:55:58,518 - INFO - 模型训练与评估完成
