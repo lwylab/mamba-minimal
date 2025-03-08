@@ -22,7 +22,74 @@ from torch.utils.data import DataLoader, TensorDataset
 
 # 导入model.py中的Mamba模型组件
 from model import ModelArgs, RMSNorm
-
+# 模型确实是基于 Mamba 架构的实现，但有一些简化和适配。以下是关键证据：
+#
+# 1. **导入 Mamba 组件**：
+#    ```python
+#    # 导入model.py中的Mamba模型组件
+#    from model import ModelArgs, RMSNorm
+#    ```
+#    以及在 `MambaForFaultPrediction` 类中：
+#    ```python
+#    from model import ResidualBlock
+#    ```
+#    这表明模型使用了 Mamba 的核心组件。
+#
+# 2. **模型参数配置**：
+#    ```python
+#    self.args = ModelArgs(
+#        d_model=config.d_model,
+#        n_layer=config.n_layer,
+#        vocab_size=num_classes,
+#        d_state=config.d_state,
+#        expand=config.expand,
+#        dt_rank=config.dt_rank,
+#        d_conv=config.d_conv
+#    )
+#    ```
+#    这些参数是 Mamba 模型的典型参数，包括：
+#    - `d_model`：模型维度
+#    - `d_state`：SSM状态维度
+#    - `expand`：扩展因子
+#    - `dt_rank`：Δ投影的秩
+#    - `d_conv`：卷积核大小
+#
+# 3. **模型结构**：
+#    ```python
+#    # Mamba层
+#    self.layers = nn.ModuleList([ResidualBlock(self.args) for _ in range(config.n_layer)])
+#    ```
+#    这里使用了 Mamba 的 `ResidualBlock`，这是 Mamba 架构的核心构建块。
+#
+# 4. **归一化层**：
+#    ```python
+#    # 最终归一化
+#    self.norm_f = RMSNorm(config.d_model)
+#    ```
+#    使用了 Mamba 中的 RMSNorm 归一化方法。
+#
+# 然而，这个实现有一些简化和适配：
+#
+# 1. **序列长度为1**：
+#    ```python
+#    max_seq_len: int = 1  # 表格数据每个样本作为一个序列元素
+#    ```
+#    这个模型将每个样本视为长度为1的序列，这与 Mamba 通常处理的长序列不同。
+#
+# 2. **简化的位置编码**：
+#    ```python
+#    # 位置编码（简化版，因为我们的序列长度为1）
+#    self.pos_encoder = nn.Parameter(torch.zeros(1, 1, config.d_model))
+#    ```
+#    由于序列长度为1，位置编码被简化了。
+#
+# 3. **适配表格数据**：
+#    整个模型架构被适配用于处理表格数据而非文本数据，这是 Mamba 最初设计的目标领域。
+#
+# **结论**：
+# 这个模型确实是基于 Mamba 架构的实现，使用了 Mamba 的核心组件（如 SSM、ResidualBlock 和 RMSNorm），但进行了一些简化和适配以处理表格数据的故障预测任务。它保留了 Mamba 的核心机制，但不是完整的、用于处理长序列的标准 Mamba 实现。
+#
+# 这种适配是合理的，因为它将 Mamba 的强大序列建模能力应用到了工业故障预测这一特定领域，即使数据不是传统意义上的长序列。
 # 配置日志
 logging.basicConfig(
     level=logging.INFO,

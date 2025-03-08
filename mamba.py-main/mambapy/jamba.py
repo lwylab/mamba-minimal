@@ -10,29 +10,30 @@ from mambapy.mamba import MambaConfig, MambaBlock, RMSNorm
 
 """
 
-This file implements the Jamba architecture, as proposed by AI21labs (altough others have proposed blending Mamba & attention in the past).
-A Jamba model combines Mamba and attention layers, as well as MoE for the MLP blocks.
+此文件实现了由 AI21labs 提出的 Jamba 架构（尽管其他人之前也提出过将 Mamba 和注意力机制结合的想法）。
+Jamba 模型结合了 Mamba 层和注意力层，以及用于 MLP 块的 MoE（Mixture of Experts）。
 
-This file closely follows the official Jamba implementation (https://huggingface.co/ai21labs/Jamba-v0.1).
-But it is quite shorter (800 lines vs 2100 lines), because it has been stripped of all optional features that come with transformers.
-It is thus easier to read, while keeping the same performances.
-It supports training (using official CUDA mamba backend or mamba.py) & inference.
-You can also load pretrained Jamba models from HF using the from_pretrained function.
+此文件紧密遵循官方 Jamba 实现（https://huggingface.co/ai21labs/Jamba-v0.1）。
+但它的代码更短（800 行 vs 2100 行），因为它去掉了所有与 transformers 相关的可选功能。
+因此它更容易阅读，同时保持相同的性能。
+它支持训练（使用官方 CUDA mamba 后端或 mamba.py）和推理。
+你还可以使用 from_pretrained 函数从 HuggingFace 加载预训练的 Jamba 模型。
 
-Architecture of the torch modules found in this file :
-- JambaLM: the final object, used for language modeling. has an embedding layer, an lm head...
-- Jamba: core model. inputs (B, L, D), outputs (B, L, D). (B=batch size, L=seq len, D=d_model).
-  It is composed of two types of layers : MambaLayer and AttentionLayer.
-- AttentionLayer: standard GQA attention layer + MoE MLP (the attn computations are located in the AttentionSDPA module)
-- MambaLayer : standard Mamba layer + MoE MLP. (the Mamba computations are located in the mamba.py file)
-- SparseMoEBlock and MLP : Moe MLP
+此文件中 torch 模块的架构：
+- JambaLM：最终对象，用于语言建模。包含嵌入层、lm 头等...
+- Jamba：核心模型。输入 (B, L, D)，输出 (B, L, D)。（B=批量大小，L=序列长度，D=d_model）。
+  它由两种类型的层组成：MambaLayer 和 AttentionLayer。
+- AttentionLayer：标准 GQA 注意力层 + MoE MLP（注意力计算位于 AttentionSDPA 模块中）
+- MambaLayer：标准 Mamba 层 + MoE MLP。（Mamba 计算位于 mamba.py 文件中）
+- SparseMoEBlock 和 MLP：MoE MLP
 
-Notes :
--if using use_cuda, you must train in float32. If not, the following error is triggered : 
+注意：
+- 如果使用 use_cuda，则必须在 float32 下进行训练。否则，在调用 selective_scan_fn 函数时会触发以下错误：
 "Expected B.scalar_type() == (!is_variable_B ? weight_type : input_type) to be true, but got false."
-when calling the selective_scan_fn function. Not clear why this error shows up when in (b)float16. TODO: investigate.
+当在 (b)float16 下运行时会出现此错误。原因尚不清楚。TODO：调查。
 
 """
+
 
 @dataclass
 class JambaLMConfig:
